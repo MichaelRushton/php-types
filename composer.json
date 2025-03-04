@@ -1,0 +1,22 @@
+{
+    "name": "michaelrushton/types",
+    "description": "",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "MichaelRushton\\Types\\": "src/"
+        },
+        "files": ["src/functions.php"]
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.7"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
