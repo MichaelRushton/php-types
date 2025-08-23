@@ -925,8 +925,7 @@ test("str_decrement", function ()
   expect($str())
   ->toBe(str_decrement("test"));
 
-})
-->skipOnPhp("<8.3.0");
+});
 
 test("str_ends_with", function ($needle)
 {
@@ -982,8 +981,7 @@ test("str_increment", function ()
   expect($str())
   ->toBe(str_increment("test"));
 
-})
-->skipOnPhp("<8.3.0");
+});
 
 test("str_ireplace", function ($search, $replace)
 {

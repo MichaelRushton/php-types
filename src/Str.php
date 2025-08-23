@@ -839,11 +839,6 @@ class Str implements Stringable
 
     $args = [(string) $needle, $before_needle];
 
-    if (-1 === version_compare(PHP_VERSION, "8.3.0"))
-    {
-      unset($args[1]);
-    }
-
     $return = strrchr($this->string, ...$args);
 
     if (false === $return)
