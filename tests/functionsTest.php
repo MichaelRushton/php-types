@@ -10,14 +10,13 @@ use function MichaelRushton\Types\arr;
 use function MichaelRushton\Types\num;
 use function MichaelRushton\Types\str;
 
-test("arr", function ($expected, ...$args)
-{
+test("arr", function ($expected, ...$args) {
 
-  expect($arr = arr(...$args))
-  ->toBeInstanceOf(Arr::class);
+    expect($arr = arr(...$args))
+    ->toBeInstanceOf(Arr::class);
 
-  expect($arr())
-  ->toBe($expected);
+    expect($arr())
+    ->toBe($expected);
 
 })
 ->with([
@@ -26,14 +25,13 @@ test("arr", function ($expected, ...$args)
   [[["test"]], [arr(["test"])]],
 ]);
 
-test("num", function ($expected, ...$args)
-{
+test("num", function ($expected, ...$args) {
 
-  expect($num = num(...$args))
-  ->toBeInstanceOf(Num::class);
+    expect($num = num(...$args))
+    ->toBeInstanceOf(Num::class);
 
-  expect($num())
-  ->toBe($expected);
+    expect($num())
+    ->toBe($expected);
 
 })
 ->with([
@@ -62,14 +60,13 @@ test("num", function ($expected, ...$args)
   ["f", "f", new Num(16)],
 ]);
 
-test("str", function ($expected, ...$args)
-{
+test("str", function ($expected, ...$args) {
 
-  expect($str = str(...$args))
-  ->toBeInstanceOf(Str::class);
+    expect($str = str(...$args))
+    ->toBeInstanceOf(Str::class);
 
-  expect($str())
-  ->toBe($expected);
+    expect($str())
+    ->toBe($expected);
 
 })
 ->with([
