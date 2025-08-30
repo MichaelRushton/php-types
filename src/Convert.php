@@ -28,7 +28,11 @@ abstract class Convert
         };
 
         if (is_array($return)) {
-            $return = array_map(__METHOD__, $return);
+
+            foreach ($return as &$element) {
+                $element = static::{__FUNCTION__}($element);
+            }
+
         }
 
         return $return;
