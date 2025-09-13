@@ -1,0 +1,24 @@
+{
+  "name": "michaelrushton/types",
+  "description": "A PHP library to manipulate arrays, numbers, and strings using a fluent interface.",
+  "license": "MIT",
+  "require": {
+    "php": "^8.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "MichaelRushton\\Types\\": "src/"
+    },
+    "files": [
+      "src/functions.php"
+    ]
+  },
+  "require-dev": {
+    "pestphp/pest": "^4.1"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
