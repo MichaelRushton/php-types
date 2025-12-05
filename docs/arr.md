@@ -145,6 +145,10 @@ public function findkey(
 ```
 
 ```php
+public function first(mixed &$return = null): mixed
+```
+
+```php
 public function flip(): static
 ```
 
@@ -231,6 +235,10 @@ public function krsort(int $flags = SORT_REGULAR): static
 
 ```php
 public function ksort(int $flags = SORT_REGULAR): static
+```
+
+```php
+public function last(mixed &$return = null): mixed
 ```
 
 ```php

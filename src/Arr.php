@@ -284,6 +284,15 @@ class Arr implements ArrayAccess, Iterator
 
     }
 
+    public function first(mixed &$return = null): mixed
+    {
+
+        $return = Convert::toFluentType(array_first($this->array));
+
+        return \func_num_args() ? $this : $return;
+
+    }
+
     public function flip(): static
     {
 
@@ -453,6 +462,15 @@ class Arr implements ArrayAccess, Iterator
         ksort($this->array, $flags);
 
         return $this;
+
+    }
+
+    public function last(mixed &$return = null): mixed
+    {
+
+        $return = Convert::toFluentType(array_last($this->array));
+
+        return \func_num_args() ? $this : $return;
 
     }
 

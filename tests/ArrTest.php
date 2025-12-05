@@ -305,6 +305,30 @@ test('array_find_key', function () {
 
 });
 
+test('array_first', function () {
+
+    $arr = new Arr(['test1', 'test2']);
+
+    expect($str = $arr->first())
+    ->toBeInstanceOf(Str::class);
+
+    expect($str())
+    ->toBe('test1');
+
+    $arr = new Arr(['test1', 'test2']);
+
+    expect($arr->first($return))
+    ->toBe($arr);
+
+    expect($return)
+    ->toBeInstanceOf(Str::class);
+
+    expect($return())
+    ->toBe('test1');
+
+})
+->skipOnPhp('<8.5.0');
+
 test('array_flip', function () {
 
     $arr = new Arr(['test']);
@@ -1313,6 +1337,30 @@ test('ksort', function ($sort) {
 
 })
 ->with([SORT_STRING, SORT_NUMERIC]);
+
+test('array_last', function () {
+
+    $arr = new Arr(['test1', 'test2']);
+
+    expect($str = $arr->last())
+    ->toBeInstanceOf(Str::class);
+
+    expect($str())
+    ->toBe('test2');
+
+    $arr = new Arr(['test1', 'test2']);
+
+    expect($arr->last($return))
+    ->toBe($arr);
+
+    expect($return)
+    ->toBeInstanceOf(Str::class);
+
+    expect($return())
+    ->toBe('test2');
+
+})
+->skipOnPhp('<8.5.0');
 
 test('localeconv', function () {
 
