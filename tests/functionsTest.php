@@ -10,7 +10,7 @@ use function MichaelRushton\Types\arr;
 use function MichaelRushton\Types\num;
 use function MichaelRushton\Types\str;
 
-test('arr', function ($expected, ...$args) {
+test('arr', function ($expected, ...$args): void {
 
     expect($arr = arr(...$args))
     ->toBeInstanceOf(Arr::class);
@@ -25,7 +25,7 @@ test('arr', function ($expected, ...$args) {
     [[['test']], [arr(['test'])]],
 ]);
 
-test('num', function ($expected, ...$args) {
+test('num', function ($expected, ...$args): void {
 
     expect($num = num(...$args))
     ->toBeInstanceOf(Num::class);
@@ -60,7 +60,7 @@ test('num', function ($expected, ...$args) {
     ['f', 'f', new Num(16)],
 ]);
 
-test('str', function ($expected, ...$args) {
+test('str', function ($expected, ...$args): void {
 
     expect($str = str(...$args))
     ->toBeInstanceOf(Str::class);

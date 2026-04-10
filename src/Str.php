@@ -11,9 +11,7 @@ class Str implements Stringable
 {
     use Extend;
 
-    public function __construct(protected string $string = '')
-    {
-    }
+    public function __construct(protected string $string = '') {}
 
     public function addcslashes(string|self $characters): static
     {

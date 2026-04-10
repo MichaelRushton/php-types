@@ -195,9 +195,9 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_diff_uassoc(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $key_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $key_compare_func,
+            ]
         );
 
         return $this;
@@ -212,9 +212,9 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_diff_ukey(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $key_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $key_compare_func,
+            ]
         );
 
         return $this;
@@ -276,7 +276,7 @@ class Arr implements ArrayAccess, Iterator
     public function findkey(
         callable $callback,
         Str|Num|null &$return = null
-    ): Str|Num|null|static {
+    ): Str|Num|static|null {
 
         $return = Convert::toFluentType(array_find_key($this->array, $callback));
 
@@ -348,9 +348,9 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_intersect_uassoc(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $key_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $key_compare_func,
+            ]
         );
 
         return $this;
@@ -365,9 +365,9 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_intersect_ukey(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $key_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $key_compare_func,
+            ]
         );
 
         return $this;
@@ -397,7 +397,7 @@ class Arr implements ArrayAccess, Iterator
 
     public function key(
         Str|Num|null &$return = null
-    ): Str|Num|null|static {
+    ): Str|Num|static|null {
 
         $return = Convert::toFluentType(key($this->array));
 
@@ -418,7 +418,7 @@ class Arr implements ArrayAccess, Iterator
 
     public function keyfirst(
         Str|Num|null &$return = null
-    ): Str|Num|null|static {
+    ): Str|Num|static|null {
 
         $return = Convert::toFluentType(array_key_first($this->array));
 
@@ -428,7 +428,7 @@ class Arr implements ArrayAccess, Iterator
 
     public function keylast(
         Str|Num|null &$return = null
-    ): Str|Num|null|static {
+    ): Str|Num|static|null {
 
         $return = Convert::toFluentType(array_key_last($this->array));
 
@@ -975,9 +975,9 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_udiff(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $value_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $value_compare_func,
+            ]
         );
 
         return $this;
@@ -992,9 +992,9 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_udiff_assoc(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $value_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $value_compare_func,
+            ]
         );
 
         return $this;
@@ -1010,10 +1010,10 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_udiff_uassoc(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $value_compare_func,
-            $key_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $value_compare_func,
+                $key_compare_func,
+            ]
         );
 
         return $this;
@@ -1028,9 +1028,9 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_uintersect(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $value_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $value_compare_func,
+            ]
         );
 
         return $this;
@@ -1045,9 +1045,9 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_uintersect_assoc(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $value_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $value_compare_func,
+            ]
         );
 
         return $this;
@@ -1063,10 +1063,10 @@ class Arr implements ArrayAccess, Iterator
         $this->array = array_uintersect_uassoc(
             $this->array,
             ...[
-            ...Convert::fromFluentType($arrays),
-            $value_compare_func,
-            $key_compare_func
-      ]
+                ...Convert::fromFluentType($arrays),
+                $value_compare_func,
+                $key_compare_func,
+            ]
         );
 
         return $this;

@@ -7,7 +7,7 @@ use MichaelRushton\Types\Convert;
 use MichaelRushton\Types\Num;
 use MichaelRushton\Types\Str;
 
-test('advance', function () {
+test('advance', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -30,11 +30,11 @@ test('advance', function () {
 
 });
 
-test('array_all', function () {
+test('array_all', function (): void {
 
     $arr = new Arr($array = [1, 2, 3]);
 
-    expect($arr->all($callback = fn ($value) => $value < 3))
+    expect($arr->all($callback = fn($value) => $value < 3))
     ->toBe(array_all($array, $callback));
 
     expect($arr->all($callback, $return))
@@ -45,11 +45,11 @@ test('array_all', function () {
 
 });
 
-test('array_any', function () {
+test('array_any', function (): void {
 
     $arr = new Arr($array = [1, 2, 3]);
 
-    expect($arr->any($callback = fn ($value) => $value < 3))
+    expect($arr->any($callback = fn($value) => $value < 3))
     ->toBe(array_any($array, $callback));
 
     expect($arr->any($callback, $return))
@@ -60,7 +60,7 @@ test('array_any', function () {
 
 });
 
-test('array_change_key_case', function ($case) {
+test('array_change_key_case', function ($case): void {
 
     $arr = new Arr(['a' => 'test']);
 
@@ -73,7 +73,7 @@ test('array_change_key_case', function ($case) {
 })
 ->with([CASE_LOWER, CASE_UPPER]);
 
-test('array_chunk', function ($length, $preserve_keys) {
+test('array_chunk', function ($length, $preserve_keys): void {
 
     $arr = new Arr(['a' => 'test1', 'b' => 'test2']);
 
@@ -94,11 +94,11 @@ test('array_chunk', function ($length, $preserve_keys) {
     [new Num(1), true],
 ]);
 
-test('array_column', function ($column_key, $index_key) {
+test('array_column', function ($column_key, $index_key): void {
 
     $arr = new Arr([
-      ['a' => 'test1', 'b' => 'test2', 'test3'],
-      ['a' => 'test4', 'b' => 'test5', 'test6'],
+        ['a' => 'test1', 'b' => 'test2', 'test3'],
+        ['a' => 'test4', 'b' => 'test5', 'test6'],
     ]);
 
     expect($arr->column($column_key, $index_key))
@@ -106,17 +106,17 @@ test('array_column', function ($column_key, $index_key) {
 
     expect($arr())
     ->toBe(array_column([
-      ['a' => 'test1', 'b' => 'test2', 'test3'],
-      ['a' => 'test4', 'b' => 'test5', 'test6'],
+        ['a' => 'test1', 'b' => 'test2', 'test3'],
+        ['a' => 'test4', 'b' => 'test5', 'test6'],
     ], 'a', 0));
 
 })
 ->with([
     ['a', 0],
-    [new Str('a'), new Num(0)]
+    [new Str('a'), new Num(0)],
 ]);
 
-test('array_combine', function ($values) {
+test('array_combine', function ($values): void {
 
     $arr = new Arr([1]);
 
@@ -129,10 +129,10 @@ test('array_combine', function ($values) {
 })
 ->with([
     [['test']],
-    [new Arr(['test'])]
+    [new Arr(['test'])],
 ]);
 
-test('array_count_values', function () {
+test('array_count_values', function (): void {
 
     $arr = new Arr(['test']);
 
@@ -144,7 +144,7 @@ test('array_count_values', function () {
 
 });
 
-test('array_diff', function ($array) {
+test('array_diff', function ($array): void {
 
     $arr = new Arr(['test1']);
 
@@ -160,7 +160,7 @@ test('array_diff', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_diff_assoc', function ($array) {
+test('array_diff_assoc', function ($array): void {
 
     $arr = new Arr(['a' => 'test1']);
 
@@ -176,7 +176,7 @@ test('array_diff_assoc', function ($array) {
     [new Arr(['b' => 'test2'])],
 ]);
 
-test('array_diff_key', function ($array) {
+test('array_diff_key', function ($array): void {
 
     $arr = new Arr(['a' => 'test1']);
 
@@ -192,15 +192,15 @@ test('array_diff_key', function ($array) {
     [new Arr(['b' => 'test2'])],
 ]);
 
-test('array_diff_uassoc', function ($array) {
+test('array_diff_uassoc', function ($array): void {
 
     $arr = new Arr(['test1']);
 
-    expect($arr->diffuassoc(fn ($a, $b) => $a <=> $b, $array))
+    expect($arr->diffuassoc(fn($a, $b) => $a <=> $b, $array))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_diff_uassoc(['test1'], ['test2'], fn ($a, $b) => $a <=> $b));
+    ->toBe(array_diff_uassoc(['test1'], ['test2'], fn($a, $b) => $a <=> $b));
 
 })
 ->with([
@@ -208,19 +208,19 @@ test('array_diff_uassoc', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_diff_ukey', function () {
+test('array_diff_ukey', function (): void {
 
     $arr = new Arr(['test1']);
 
-    expect($arr->diffukey(fn ($a, $b) => $a <=> $b, ['test2']))
+    expect($arr->diffukey(fn($a, $b) => $a <=> $b, ['test2']))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_diff_ukey(['test1'], ['test2'], fn ($a, $b) => $a <=> $b));
+    ->toBe(array_diff_ukey(['test1'], ['test2'], fn($a, $b) => $a <=> $b));
 
 });
 
-test('array_fill', function ($start_index, $count) {
+test('array_fill', function ($start_index, $count): void {
 
     expect($arr = Arr::fill($start_index, $count, 'test'))
     ->toBeInstanceOf(Arr::class);
@@ -234,7 +234,7 @@ test('array_fill', function ($start_index, $count) {
     [new Num(0), new Num(1)],
 ]);
 
-test('array_fill_keys', function () {
+test('array_fill_keys', function (): void {
 
     $arr = new Arr(['test1']);
 
@@ -246,7 +246,7 @@ test('array_fill_keys', function () {
 
 });
 
-test('array_filter', function () {
+test('array_filter', function (): void {
 
     $arr = new Arr(['test', '']);
 
@@ -258,16 +258,16 @@ test('array_filter', function () {
 
     $arr = new Arr(['test', '']);
 
-    expect($arr->filter(fn ($v) => 0 !== $v, ARRAY_FILTER_USE_KEY)())
-    ->toBe(array_filter(['test', ''], fn ($v) => 0 !== $v, ARRAY_FILTER_USE_KEY));
+    expect($arr->filter(fn($v) => 0 !== $v, ARRAY_FILTER_USE_KEY)())
+    ->toBe(array_filter(['test', ''], fn($v) => 0 !== $v, ARRAY_FILTER_USE_KEY));
 
 });
 
-test('array_find', function () {
+test('array_find', function (): void {
 
     $arr = new Arr($array = [1, 2, 3]);
 
-    expect($num = $arr->find($callback = fn ($value) => 2 === $value))
+    expect($num = $arr->find($callback = fn($value) => 2 === $value))
     ->toBeInstanceOf(Num::class);
 
     expect($num())
@@ -284,11 +284,11 @@ test('array_find', function () {
 
 });
 
-test('array_find_key', function () {
+test('array_find_key', function (): void {
 
     $arr = new Arr($array = [1, 2, 3]);
 
-    expect($num = $arr->findkey($callback = fn ($value) => 2 === $value))
+    expect($num = $arr->findkey($callback = fn($value) => 2 === $value))
     ->toBeInstanceOf(Num::class);
 
     expect($num())
@@ -305,7 +305,7 @@ test('array_find_key', function () {
 
 });
 
-test('array_first', function () {
+test('array_first', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -329,7 +329,7 @@ test('array_first', function () {
 })
 ->skipOnPhp('<8.5.0');
 
-test('array_flip', function () {
+test('array_flip', function (): void {
 
     $arr = new Arr(['test']);
 
@@ -341,7 +341,7 @@ test('array_flip', function () {
 
 });
 
-test('array_intersect', function ($array) {
+test('array_intersect', function ($array): void {
 
     $arr = new Arr(['test1']);
 
@@ -357,7 +357,7 @@ test('array_intersect', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_intersect_assoc', function ($array) {
+test('array_intersect_assoc', function ($array): void {
 
     $arr = new Arr(['test1']);
 
@@ -373,7 +373,7 @@ test('array_intersect_assoc', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_intersect_key', function ($array) {
+test('array_intersect_key', function ($array): void {
 
     $arr = new Arr(['test1']);
 
@@ -389,7 +389,7 @@ test('array_intersect_key', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_intersect_uassoc', function ($array) {
+test('array_intersect_uassoc', function ($array): void {
 
     $arr = new Arr(['test']);
 
@@ -405,15 +405,15 @@ test('array_intersect_uassoc', function ($array) {
     [new Arr(['TEST'])],
 ]);
 
-test('array_intersect_ukey', function ($array) {
+test('array_intersect_ukey', function ($array): void {
 
     $arr = new Arr([0 => 'test']);
 
-    expect($arr->intersectukey(fn ($a, $b) => $a === $b ? 1 : 0, $array))
+    expect($arr->intersectukey(fn($a, $b) => $a === $b ? 1 : 0, $array))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_intersect_ukey([0 => 'test'], [1 => 'test'], fn ($a, $b) => $a === $b ? 1 : 0));
+    ->toBe(array_intersect_ukey([0 => 'test'], [1 => 'test'], fn($a, $b) => $a === $b ? 1 : 0));
 
 })
 ->with([
@@ -421,7 +421,7 @@ test('array_intersect_ukey', function ($array) {
     [new Arr([1 => 'test'])],
 ]);
 
-test('array_is_list', function ($key, $expected) {
+test('array_is_list', function ($key, $expected): void {
 
     $arr = new Arr([$key => 'test']);
 
@@ -440,7 +440,7 @@ test('array_is_list', function ($key, $expected) {
     [1, false],
 ]);
 
-test('array_key_exists', function ($key, $expected) {
+test('array_key_exists', function ($key, $expected): void {
 
     $arr = new Arr(['test']);
 
@@ -461,7 +461,7 @@ test('array_key_exists', function ($key, $expected) {
     [new Str('a'), false],
 ]);
 
-test('array_key_first', function ($key, $class) {
+test('array_key_first', function ($key, $class): void {
 
     $arr = new Arr([$key => 'test1', 'test2']);
 
@@ -486,7 +486,7 @@ test('array_key_first', function ($key, $class) {
     ['a', Str::class],
 ]);
 
-test('array_key_last', function ($key, $class) {
+test('array_key_last', function ($key, $class): void {
 
     $arr = new Arr(['test1', $key => 'test2']);
 
@@ -511,7 +511,7 @@ test('array_key_last', function ($key, $class) {
     ['a', Str::class],
 ]);
 
-test('array_keys', function () {
+test('array_keys', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -528,15 +528,15 @@ test('array_keys', function () {
 
 });
 
-test('array_map', function ($array) {
+test('array_map', function ($array): void {
 
     $arr = new Arr(['test1']);
 
-    expect($arr->map(fn ($a, $b) => '$a$b', $array))
+    expect($arr->map(fn($a, $b) => '$a$b', $array))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_map(fn ($a, $b) => '$a$b', ['test1'], ['test2']));
+    ->toBe(array_map(fn($a, $b) => '$a$b', ['test1'], ['test2']));
 
 })
 ->with([
@@ -544,7 +544,7 @@ test('array_map', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_merge', function ($array) {
+test('array_merge', function ($array): void {
 
     $arr = new Arr(['test1']);
 
@@ -560,7 +560,7 @@ test('array_merge', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_merge_recursive', function ($array) {
+test('array_merge_recursive', function ($array): void {
 
     $arr = new Arr(['a' => 'test1']);
 
@@ -576,11 +576,11 @@ test('array_merge_recursive', function ($array) {
     [new Arr(['a' => ['test2', 'test3']])],
 ]);
 
-test('array_multisort', function ($rest) {
+test('array_multisort', function ($rest): void {
 
     $arr = new Arr($array = [
-      ['10', 11, 100, 100, 'a'],
-      [1, 2, '2', 3, 1],
+        ['10', 11, 100, 100, 'a'],
+        [1, 2, '2', 3, 1],
     ]);
 
     expect($arr->multisort())
@@ -592,8 +592,8 @@ test('array_multisort', function ($rest) {
     ->toBe($array);
 
     $arr = new Arr($array = [
-      ['10', 11, 100, 100, 'a'],
-      [1, 2, '2', 3, 1],
+        ['10', 11, 100, 100, 'a'],
+        [1, 2, '2', 3, 1],
     ]);
 
     expect($arr->multisort(SORT_NUMERIC, SORT_DESC, $rest))
@@ -611,7 +611,7 @@ test('array_multisort', function ($rest) {
 ]);
 ;
 
-test('array_pad', function ($length) {
+test('array_pad', function ($length): void {
 
     $arr = new Arr(['test']);
 
@@ -624,7 +624,7 @@ test('array_pad', function ($length) {
 })
 ->with([2, new Num(2)]);
 
-test('array_pop', function () {
+test('array_pop', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -647,7 +647,7 @@ test('array_pop', function () {
 
 });
 
-test('array_product', function () {
+test('array_product', function (): void {
 
     $arr = new Arr([1, 2]);
 
@@ -668,7 +668,7 @@ test('array_product', function () {
 
 });
 
-test('array_push', function () {
+test('array_push', function (): void {
 
     $arr = new Arr($array = ['test1']);
 
@@ -682,7 +682,7 @@ test('array_push', function () {
 
 });
 
-test('array_rand', function () {
+test('array_rand', function (): void {
 
     $arr = new Arr([1 => 'test1', 2 => 'test2']);
 
@@ -708,11 +708,11 @@ test('array_rand', function () {
 
 });
 
-test('array_reduce', function () {
+test('array_reduce', function (): void {
 
     $arr = new Arr([1, 2]);
 
-    $sum = fn ($carry, $item) => $carry += $item;
+    $sum = fn($carry, $item) => $carry += $item;
 
     expect($arr->reduce($sum, 3))
     ->toBe(array_reduce([1, 2], $sum, 3));
@@ -725,7 +725,7 @@ test('array_reduce', function () {
 
 });
 
-test('array_replace', function ($array) {
+test('array_replace', function ($array): void {
 
     $arr = new Arr(['test1']);
 
@@ -741,7 +741,7 @@ test('array_replace', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_replace_recursive', function ($array) {
+test('array_replace_recursive', function ($array): void {
 
     $arr = new Arr(['a' => ['test1'], 'b' => ['test2', 'test3']]);
 
@@ -757,7 +757,7 @@ test('array_replace_recursive', function ($array) {
     [new Arr(['a' => ['test4'], 'b' => ['test5']])],
 ]);
 
-test('array_reverse', function () {
+test('array_reverse', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -769,7 +769,7 @@ test('array_reverse', function () {
 
 });
 
-test('array_search', function ($needle, $strict, $expected, $class = null) {
+test('array_search', function ($needle, $strict, $expected, $class = null): void {
 
     $arr = new Arr([1 => 'test1', 'a' => 1]);
 
@@ -797,7 +797,7 @@ test('array_search', function ($needle, $strict, $expected, $class = null) {
     [1.0, false, 'a', Str::class],
 ]);
 
-test('array_shift', function () {
+test('array_shift', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -820,7 +820,7 @@ test('array_shift', function () {
 
 });
 
-test('array_slice', function ($offset, $length, $preserve_keys) {
+test('array_slice', function ($offset, $length, $preserve_keys): void {
 
     $arr = new Arr($array = ['a' => 'test1', 'b' => 'test2', 'c' => 'test3']);
 
@@ -836,7 +836,7 @@ test('array_slice', function ($offset, $length, $preserve_keys) {
     [new Num(1), new Num(2), false],
 ]);
 
-test('array_splice', function ($offset, $length, $replacement) {
+test('array_splice', function ($offset, $length, $replacement): void {
 
     $arr1 = new Arr(['test1', 'test2', 'test3']);
 
@@ -866,7 +866,7 @@ test('array_splice', function ($offset, $length, $replacement) {
     [new Num(1), new Num(2), new Arr(['test4'])],
 ]);
 
-test('array_sum', function () {
+test('array_sum', function (): void {
 
     $arr = new Arr([1, 2]);
 
@@ -887,15 +887,15 @@ test('array_sum', function () {
 
 });
 
-test('array_udiff', function ($array) {
+test('array_udiff', function ($array): void {
 
     $arr = new Arr(['test1']);
 
-    expect($arr->udiff(fn ($a, $b) => $a <=> $b, $array))
+    expect($arr->udiff(fn($a, $b) => $a <=> $b, $array))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_udiff(['test1'], ['test2'], fn ($a, $b) => $a <=> $b));
+    ->toBe(array_udiff(['test1'], ['test2'], fn($a, $b) => $a <=> $b));
 
 })
 ->with([
@@ -903,15 +903,15 @@ test('array_udiff', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_udiff_assoc', function ($array) {
+test('array_udiff_assoc', function ($array): void {
 
     $arr = new Arr(['test1']);
 
-    expect($arr->udiffassoc(fn ($a, $b) => $a <=> $b, $array))
+    expect($arr->udiffassoc(fn($a, $b) => $a <=> $b, $array))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_udiff_assoc(['test1'], ['test2'], fn ($a, $b) => $a <=> $b));
+    ->toBe(array_udiff_assoc(['test1'], ['test2'], fn($a, $b) => $a <=> $b));
 
 })
 ->with([
@@ -919,14 +919,14 @@ test('array_udiff_assoc', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_udiff_uassoc', function ($array) {
+test('array_udiff_uassoc', function ($array): void {
 
     $arr = new Arr(['test1']);
 
     expect(
         $arr->udiffuassoc(
-            fn ($a, $b) => $a <=> $b,
-            fn ($a, $b) => $b <=> $a,
+            fn($a, $b) => $a <=> $b,
+            fn($a, $b) => $b <=> $a,
             $array
         )
     )
@@ -937,8 +937,8 @@ test('array_udiff_uassoc', function ($array) {
         array_udiff_uassoc(
             ['test1'],
             ['test2'],
-            fn ($a, $b) => $a <=> $b,
-            fn ($a, $b) => $b <=> $a
+            fn($a, $b) => $a <=> $b,
+            fn($a, $b) => $b <=> $a
         )
     );
 
@@ -948,15 +948,15 @@ test('array_udiff_uassoc', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_uintersect', function ($array) {
+test('array_uintersect', function ($array): void {
 
     $arr = new Arr(['test1']);
 
-    expect($arr->uintersect(fn ($a, $b) => $a <=> $b, $array))
+    expect($arr->uintersect(fn($a, $b) => $a <=> $b, $array))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_uintersect(['test1'], ['test2'], fn ($a, $b) => $a <=> $b));
+    ->toBe(array_uintersect(['test1'], ['test2'], fn($a, $b) => $a <=> $b));
 
 })
 ->with([
@@ -964,15 +964,15 @@ test('array_uintersect', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_uintersect_assoc', function ($array) {
+test('array_uintersect_assoc', function ($array): void {
 
     $arr = new Arr(['test1']);
 
-    expect($arr->uintersectassoc(fn ($a, $b) => $a <=> $b, $array))
+    expect($arr->uintersectassoc(fn($a, $b) => $a <=> $b, $array))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_uintersect_assoc(['test1'], ['test2'], fn ($a, $b) => $a <=> $b));
+    ->toBe(array_uintersect_assoc(['test1'], ['test2'], fn($a, $b) => $a <=> $b));
 
 })
 ->with([
@@ -980,14 +980,14 @@ test('array_uintersect_assoc', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_uintersect_uassoc', function ($array) {
+test('array_uintersect_uassoc', function ($array): void {
 
     $arr = new Arr(['test1']);
 
     expect(
         $arr->uintersectuassoc(
-            fn ($a, $b) => $a <=> $b,
-            fn ($a, $b) => $b <=> $a,
+            fn($a, $b) => $a <=> $b,
+            fn($a, $b) => $b <=> $a,
             $array
         )
     )
@@ -998,8 +998,8 @@ test('array_uintersect_uassoc', function ($array) {
         array_uintersect_uassoc(
             ['test1'],
             ['test2'],
-            fn ($a, $b) => $a <=> $b,
-            fn ($a, $b) => $b <=> $a
+            fn($a, $b) => $a <=> $b,
+            fn($a, $b) => $b <=> $a
         )
     );
 
@@ -1009,7 +1009,7 @@ test('array_uintersect_uassoc', function ($array) {
     [new Arr(['test2'])],
 ]);
 
-test('array_unique', function ($sort) {
+test('array_unique', function ($sort): void {
 
     $arr = new Arr(['00', '0']);
 
@@ -1022,7 +1022,7 @@ test('array_unique', function ($sort) {
 })
 ->with([SORT_STRING, SORT_NUMERIC]);
 
-test('array_unshift', function () {
+test('array_unshift', function (): void {
 
     $arr = new Arr($array = ['test1']);
 
@@ -1036,7 +1036,7 @@ test('array_unshift', function () {
 
 });
 
-test('array_values', function () {
+test('array_values', function (): void {
 
     $arr = new Arr(['a' => 'test1', 'b' => 'test2']);
 
@@ -1048,16 +1048,16 @@ test('array_values', function () {
 
 });
 
-test('array_walk', function () {
+test('array_walk', function (): void {
 
     $arr = new Arr($array = ['TEST1', 'TEST2']);
 
-    expect($arr->walk(function (&$a, $b, $c) {
+    expect($arr->walk(function (&$a, $b, $c): void {
         $a = '$a$c';
     }, '0'))
     ->toBe($arr);
 
-    array_walk($array, function (&$a, $b, $c) {
+    array_walk($array, function (&$a, $b, $c): void {
         $a = '$a$c';
     }, '0');
 
@@ -1066,16 +1066,16 @@ test('array_walk', function () {
 
 });
 
-test('array_walk_recursive', function () {
+test('array_walk_recursive', function (): void {
 
     $arr = new Arr($array = [['TEST1', 'TEST2']]);
 
-    expect($arr->walkrecursive(function (&$a, $b, $c) {
+    expect($arr->walkrecursive(function (&$a, $b, $c): void {
         $a = '$a$c';
     }, '0'))
     ->toBe($arr);
 
-    array_walk_recursive($array, function (&$a, $b, $c) {
+    array_walk_recursive($array, function (&$a, $b, $c): void {
         $a = '$a$c';
     }, '0');
 
@@ -1084,7 +1084,7 @@ test('array_walk_recursive', function () {
 
 });
 
-test('arsort', function ($sort) {
+test('arsort', function ($sort): void {
 
     $arr = new Arr($array = ['a' => 'test', 'b' => '1']);
 
@@ -1099,7 +1099,7 @@ test('arsort', function ($sort) {
 })
 ->with([SORT_STRING, SORT_NUMERIC]);
 
-test('asort', function ($sort) {
+test('asort', function ($sort): void {
 
     $arr = new Arr($array = ['a' => 'test', 'b' => '1']);
 
@@ -1114,7 +1114,7 @@ test('asort', function ($sort) {
 })
 ->with([SORT_STRING, SORT_NUMERIC]);
 
-test('clone', function () {
+test('clone', function (): void {
 
     $arr1 = new Arr(['test']);
 
@@ -1141,7 +1141,7 @@ test('clone', function () {
 
 });
 
-test('contains', function ($needle, $strict, $expected) {
+test('contains', function ($needle, $strict, $expected): void {
 
     $arr = new Arr(['test', 1.0]);
 
@@ -1164,7 +1164,7 @@ test('contains', function ($needle, $strict, $expected) {
     [new Str('test'), true, true],
 ]);
 
-test('count', function ($mode, $expected) {
+test('count', function ($mode, $expected): void {
 
     $arr = new Arr(['test1', ['test2', 'test3']]);
 
@@ -1189,7 +1189,7 @@ test('count', function ($mode, $expected) {
     [COUNT_RECURSIVE, 4],
 ]);
 
-test('current', function () {
+test('current', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1212,7 +1212,7 @@ test('current', function () {
 
 });
 
-test('end', function () {
+test('end', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1235,7 +1235,7 @@ test('end', function () {
 
 });
 
-test('implode', function ($separator) {
+test('implode', function ($separator): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1259,7 +1259,7 @@ test('implode', function ($separator) {
 })
 ->with([', ', new Str(', ')]);
 
-test('json_encode', function () {
+test('json_encode', function (): void {
 
     $arr = new Arr($array = [1, [2], [[3]]]);
 
@@ -1283,7 +1283,7 @@ test('json_encode', function () {
 
 });
 
-test('key', function ($key, $class) {
+test('key', function ($key, $class): void {
 
     $arr = new Arr([$key => 'test']);
 
@@ -1308,7 +1308,7 @@ test('key', function ($key, $class) {
     ['a', Str::class],
 ]);
 
-test('krsort', function ($sort) {
+test('krsort', function ($sort): void {
 
     $arr = new Arr($array = ['a' => 'test', 'b' => '1']);
 
@@ -1323,7 +1323,7 @@ test('krsort', function ($sort) {
 })
 ->with([SORT_STRING, SORT_NUMERIC]);
 
-test('ksort', function ($sort) {
+test('ksort', function ($sort): void {
 
     $arr = new Arr($array = ['a' => 'test', 'b' => '1']);
 
@@ -1338,7 +1338,7 @@ test('ksort', function ($sort) {
 })
 ->with([SORT_STRING, SORT_NUMERIC]);
 
-test('array_last', function () {
+test('array_last', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1362,7 +1362,7 @@ test('array_last', function () {
 })
 ->skipOnPhp('<8.5.0');
 
-test('localeconv', function () {
+test('localeconv', function (): void {
 
     expect($arr = Arr::localeconv())
     ->toBeInstanceOf(Arr::class);
@@ -1372,7 +1372,7 @@ test('localeconv', function () {
 
 });
 
-test('max', function () {
+test('max', function (): void {
 
     $arr = new Arr([new Num(1), 2, new Num(3)]);
 
@@ -1393,7 +1393,7 @@ test('max', function () {
 
 });
 
-test('min', function () {
+test('min', function (): void {
 
     $arr = new Arr([new Num(1), 2, new Num(3)]);
 
@@ -1414,7 +1414,7 @@ test('min', function () {
 
 });
 
-test('natcasesort', function () {
+test('natcasesort', function (): void {
 
     $arr = new Arr($array = ['a' => 'test1', 'b' => 'TEST10', 'c' => 'test2']);
 
@@ -1428,7 +1428,7 @@ test('natcasesort', function () {
 
 });
 
-test('natsort', function () {
+test('natsort', function (): void {
 
     $arr = new Arr($array = ['a' => 'test1', 'b' => 'TEST10', 'c' => 'test2']);
 
@@ -1442,7 +1442,7 @@ test('natsort', function () {
 
 });
 
-test('next', function () {
+test('next', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1453,7 +1453,7 @@ test('next', function () {
 
 });
 
-test('offset exists', function ($offset, $expected) {
+test('offset exists', function ($offset, $expected): void {
 
     $arr = new Arr(['test']);
 
@@ -1468,7 +1468,7 @@ test('offset exists', function ($offset, $expected) {
     [new Str('a'), false],
 ]);
 
-test('offset get', function ($offset1, $offset2) {
+test('offset get', function ($offset1, $offset2): void {
 
     $arr = new Arr(['test']);
 
@@ -1487,7 +1487,7 @@ test('offset get', function ($offset1, $offset2) {
     [new Num(0), new Str('a')],
 ]);
 
-test('offset set', function () {
+test('offset set', function (): void {
 
     $arr = new Arr(['test1']);
 
@@ -1503,17 +1503,17 @@ test('offset set', function () {
 
     expect($arr())
     ->toBe([
-      'test1',
-      'test2',
-      3 => 'test3',
-      4 => 'test4',
-      'a' => 'test5',
-      'b' => 'test6',
+        'test1',
+        'test2',
+        3 => 'test3',
+        4 => 'test4',
+        'a' => 'test5',
+        'b' => 'test6',
     ]);
 
 });
 
-test('offset unset', function () {
+test('offset unset', function (): void {
 
     $arr = new Arr(['test1', 'test2', 'test3', 'a' => 'test3', 'b' => 'test4']);
 
@@ -1527,7 +1527,7 @@ test('offset unset', function () {
 
 });
 
-test('preg_filter', function ($pattern, $replacement, $limit) {
+test('preg_filter', function ($pattern, $replacement, $limit): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1551,7 +1551,7 @@ test('preg_filter', function ($pattern, $replacement, $limit) {
     [new Arr(['/[st]/']), 'a', 2],
 ]);
 
-test('preg_grep', function ($pattern, $flags) {
+test('preg_grep', function ($pattern, $flags): void {
 
     $arr = new Arr(['test1', 'x']);
 
@@ -1567,7 +1567,7 @@ test('preg_grep', function ($pattern, $flags) {
     [new Str('/[st]/'), PREG_GREP_INVERT],
 ]);
 
-test('preg_replace', function ($pattern, $replacement, $limit) {
+test('preg_replace', function ($pattern, $replacement, $limit): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1591,15 +1591,15 @@ test('preg_replace', function ($pattern, $replacement, $limit) {
     [new Arr(['/[st]/']), 'a', 2],
 ]);
 
-test('preg_replace_callback', function ($pattern, $limit) {
+test('preg_replace_callback', function ($pattern, $limit): void {
 
     $arr = new Arr(['test1', 'test2']);
 
-    expect($arr->pregreplacecallback($pattern, fn ($matches) => strtoupper($matches[0]), $limit, $count1))
+    expect($arr->pregreplacecallback($pattern, fn($matches) => strtoupper($matches[0]), $limit, $count1))
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(preg_replace_callback('/[st]/', fn ($matches) => strtoupper($matches[0]), ['test1', 'test2'], 2, $count2));
+    ->toBe(preg_replace_callback('/[st]/', fn($matches) => strtoupper($matches[0]), ['test1', 'test2'], 2, $count2));
 
     expect($count1)
     ->toBeInstanceOf(Num::class);
@@ -1615,7 +1615,7 @@ test('preg_replace_callback', function ($pattern, $limit) {
     [new Arr(['/[st]/']), 2],
 ]);
 
-test('preg_replace_callback_array', function ($pattern, $limit, $flags) {
+test('preg_replace_callback_array', function ($pattern, $limit, $flags): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1623,7 +1623,7 @@ test('preg_replace_callback_array', function ($pattern, $limit, $flags) {
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(preg_replace_callback_array(['/[st]/' => fn ($matches) => strtoupper($matches[0])], ['test1', 'test2'], 2, $count2, $flags));
+    ->toBe(preg_replace_callback_array(['/[st]/' => fn($matches) => strtoupper($matches[0])], ['test1', 'test2'], 2, $count2, $flags));
 
     expect($count1)
     ->toBeInstanceOf(Num::class);
@@ -1633,11 +1633,11 @@ test('preg_replace_callback_array', function ($pattern, $limit, $flags) {
 
 })
 ->with([
-    [['/[st]/' => fn ($matches) => strtoupper($matches[0])], 2, 0],
-    [new Arr(['/[st]/' => fn ($matches) => strtoupper($matches[0])]), new Num(2), PREG_UNMATCHED_AS_NULL],
+    [['/[st]/' => fn($matches) => strtoupper($matches[0])], 2, 0],
+    [new Arr(['/[st]/' => fn($matches) => strtoupper($matches[0])]), new Num(2), PREG_UNMATCHED_AS_NULL],
 ]);
 
-test('prev', function () {
+test('prev', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1664,7 +1664,7 @@ test('prev', function () {
 
 });
 
-test('print_r', function () {
+test('print_r', function (): void {
 
     $arr = new Arr(['test']);
 
@@ -1683,7 +1683,7 @@ test('print_r', function () {
 
 });
 
-test('range', function ($start, $end, $step) {
+test('range', function ($start, $end, $step): void {
 
     expect($arr = Arr::range($start, $end, $step))
     ->toBeInstanceOf(Arr::class);
@@ -1697,7 +1697,7 @@ test('range', function ($start, $end, $step) {
     [new Num(0), new Num(10), new Num(2)],
 ]);
 
-test('reset', function () {
+test('reset', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1724,7 +1724,7 @@ test('reset', function () {
 
 });
 
-test('rewind', function () {
+test('rewind', function (): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1736,7 +1736,7 @@ test('rewind', function () {
 
 });
 
-test('rsort', function ($sort) {
+test('rsort', function ($sort): void {
 
     $arr = new Arr($array = ['a' => 'test', 'b' => '1']);
 
@@ -1751,7 +1751,7 @@ test('rsort', function ($sort) {
 })
 ->with([SORT_STRING, SORT_NUMERIC]);
 
-test('seek', function ($offset, $expected) {
+test('seek', function ($offset, $expected): void {
 
     $arr = new Arr(['test1', 'test2']);
 
@@ -1771,7 +1771,7 @@ test('seek', function ($offset, $expected) {
     [new Num(2), false],
 ]);
 
-test('serialize', function () {
+test('serialize', function (): void {
 
     $arr = new Arr($array = [1, 2, 3]);
 
@@ -1786,7 +1786,7 @@ test('serialize', function () {
 
 });
 
-test('shuffle', function () {
+test('shuffle', function (): void {
 
     $arr = new Arr([1, 2]);
 
@@ -1798,7 +1798,7 @@ test('shuffle', function () {
 
 });
 
-test('sort', function ($sort) {
+test('sort', function ($sort): void {
 
     $arr = new Arr($array = ['a' => 'test', 'b' => '1']);
 
@@ -1813,7 +1813,7 @@ test('sort', function ($sort) {
 })
 ->with([SORT_STRING, SORT_NUMERIC]);
 
-test('substr_replace', function ($replace, $offset, $length) {
+test('substr_replace', function ($replace, $offset, $length): void {
 
     $arr = new Arr($array = ['test1 test1', 'test2 test2']);
 
@@ -1828,49 +1828,49 @@ test('substr_replace', function ($replace, $offset, $length) {
 ->with([[[1, 2]], new Arr([1, 2])])
 ->with([[[3, 4]], new Arr([3, 4])]);
 
-test('uasort', function () {
+test('uasort', function (): void {
 
     $arr = new Arr($array = ['a' => 'test1', 'b' => 'test2']);
 
-    expect($arr->uasort(fn ($a, $b) => 'b' === $b ? 0 : 1))
+    expect($arr->uasort(fn($a, $b) => 'b' === $b ? 0 : 1))
     ->toBe($arr);
 
-    uasort($array, fn ($a, $b) => 'b' === $b ? 0 : 1);
+    uasort($array, fn($a, $b) => 'b' === $b ? 0 : 1);
 
     expect($arr())
     ->toBe($array);
 
 });
 
-test('uksort', function () {
+test('uksort', function (): void {
 
     $arr = new Arr($array = ['a' => 'test1', 'b' => 'test2']);
 
-    expect($arr->uksort(fn ($a, $b) => 'b' === $b ? 0 : 1))
+    expect($arr->uksort(fn($a, $b) => 'b' === $b ? 0 : 1))
     ->toBe($arr);
 
-    uksort($array, fn ($a, $b) => 'b' === $b ? 0 : 1);
+    uksort($array, fn($a, $b) => 'b' === $b ? 0 : 1);
 
     expect($arr())
     ->toBe($array);
 
 });
 
-test('usort', function () {
+test('usort', function (): void {
 
     $arr = new Arr($array = ['a' => 'test1', 'b' => 'test2']);
 
-    expect($arr->usort(fn ($a, $b) => 'b' === $b ? 0 : 1))
+    expect($arr->usort(fn($a, $b) => 'b' === $b ? 0 : 1))
     ->toBe($arr);
 
-    usort($array, fn ($a, $b) => 'b' === $b ? 0 : 1);
+    usort($array, fn($a, $b) => 'b' === $b ? 0 : 1);
 
     expect($arr())
     ->toBe($array);
 
 });
 
-test('valid', function () {
+test('valid', function (): void {
 
     $arr = new Arr(['test']);
 
@@ -1884,7 +1884,7 @@ test('valid', function () {
 
 });
 
-test('vardump', function () {
+test('vardump', function (): void {
 
     $arr = new Arr(['test']);
 
@@ -1895,7 +1895,7 @@ test('vardump', function () {
 
 });
 
-test('implements iterator', function () {
+test('implements iterator', function (): void {
 
     $arr1 = new Arr(['test1', 'test2']);
 
@@ -1915,7 +1915,7 @@ test('implements iterator', function () {
 
 });
 
-test('magic get', function () {
+test('magic get', function (): void {
 
     $arr = new Arr(['A' => 'test']);
 

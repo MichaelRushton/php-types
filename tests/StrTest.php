@@ -7,7 +7,7 @@ use MichaelRushton\Types\Convert;
 use MichaelRushton\Types\Num;
 use MichaelRushton\Types\Str;
 
-test('addcslashes', function ($characters) {
+test('addcslashes', function ($characters): void {
 
     $str = new Str('test');
 
@@ -20,7 +20,7 @@ test('addcslashes', function ($characters) {
 })
 ->with(['A..z', new Str('A..z')]);
 
-test('addslashes', function () {
+test('addslashes', function (): void {
 
     $str = new Str("te'st");
 
@@ -32,7 +32,7 @@ test('addslashes', function () {
 
 });
 
-test('bin2hex', function () {
+test('bin2hex', function (): void {
 
     $str = new Str('test');
 
@@ -44,7 +44,7 @@ test('bin2hex', function () {
 
 });
 
-test('chunk_split', function ($length, $separator) {
+test('chunk_split', function ($length, $separator): void {
 
     $str = new Str('test');
 
@@ -60,7 +60,7 @@ test('chunk_split', function ($length, $separator) {
     [new Num(2), new Str('-')],
 ]);
 
-test('clone', function () {
+test('clone', function (): void {
 
     $str1 = new Str('test');
 
@@ -87,7 +87,7 @@ test('clone', function () {
 
 });
 
-test('convert_uudecode', function () {
+test('convert_uudecode', function (): void {
 
     $str = new Str(convert_uuencode('test'));
 
@@ -99,7 +99,7 @@ test('convert_uudecode', function () {
 
 });
 
-test('convert_uuencode', function () {
+test('convert_uuencode', function (): void {
 
     $str = new Str('test');
 
@@ -111,7 +111,7 @@ test('convert_uuencode', function () {
 
 });
 
-test('count_chars array', function ($mode) {
+test('count_chars array', function ($mode): void {
 
     $str = new Str('test');
 
@@ -133,7 +133,7 @@ test('count_chars array', function ($mode) {
 })
 ->with([0, 1, 2, new Num(0), new Num(1), new Num(2)]);
 
-test('count_chars string', function ($mode) {
+test('count_chars string', function ($mode): void {
 
     $str = new Str('test');
 
@@ -146,7 +146,7 @@ test('count_chars string', function ($mode) {
 })
 ->with([3, 4, new Num(3), new Num(4)]);
 
-test('crc32', function () {
+test('crc32', function (): void {
 
     $str = new Str('test');
 
@@ -167,7 +167,7 @@ test('crc32', function () {
 
 });
 
-test('crypt', function ($salt) {
+test('crypt', function ($salt): void {
 
     $str = new Str('test');
 
@@ -180,7 +180,7 @@ test('crypt', function ($salt) {
 })
 ->with(['$1$test$', new Str('$1$test$')]);
 
-test('echo', function () {
+test('echo', function (): void {
 
     $str = new Str('test');
 
@@ -191,7 +191,7 @@ test('echo', function () {
 
 });
 
-test('explode', function ($separator, $limit) {
+test('explode', function ($separator, $limit): void {
 
     $str = new Str('test1-test2-test3');
 
@@ -216,7 +216,7 @@ test('explode', function ($separator, $limit) {
     [new Str('-'), new Num(2)],
 ]);
 
-test('fprintf', function ($string, $number) {
+test('fprintf', function ($string, $number): void {
 
     $str = new Str('%s %u');
 
@@ -231,7 +231,7 @@ test('fprintf', function ($string, $number) {
     [new Str('test'), new Num(1)],
 ]);
 
-test('hebrev', function ($max_chars_per_line) {
+test('hebrev', function ($max_chars_per_line): void {
 
     $str = new Str('á çùåï äúùñâ');
 
@@ -244,7 +244,7 @@ test('hebrev', function ($max_chars_per_line) {
 })
 ->with([10, new Num(10)]);
 
-test('hex2bin', function () {
+test('hex2bin', function (): void {
 
     $str = new Str(bin2hex('test'));
 
@@ -256,7 +256,7 @@ test('hex2bin', function () {
 
 });
 
-test('html_entity_decode', function ($flags, $encoding) {
+test('html_entity_decode', function ($flags, $encoding): void {
 
     $str = new Str('&#039;test&#039; &pound; test');
 
@@ -272,7 +272,7 @@ test('html_entity_decode', function ($flags, $encoding) {
     [ENT_QUOTES, new Str('UTF-8')],
 ]);
 
-test('htmlentities', function ($flags, $encoding, $double_encode) {
+test('htmlentities', function ($flags, $encoding, $double_encode): void {
 
     $str = new Str("'&#039;test&#039;' &pound; £ test");
 
@@ -288,7 +288,7 @@ test('htmlentities', function ($flags, $encoding, $double_encode) {
     [ENT_NOQUOTES, new Str('UTF-8'), false],
 ]);
 
-test('htmlspecialchars', function ($flags, $encoding, $double_encode) {
+test('htmlspecialchars', function ($flags, $encoding, $double_encode): void {
 
     $str = new Str("'&#039;test&#039;' &pound; £ test");
 
@@ -304,7 +304,7 @@ test('htmlspecialchars', function ($flags, $encoding, $double_encode) {
     [ENT_NOQUOTES, new Str('UTF-8'), false],
 ]);
 
-test('htmlspecialchars_decode', function ($flags) {
+test('htmlspecialchars_decode', function ($flags): void {
 
     $str = new Str('&#039;test&#039; &pound; test');
 
@@ -317,7 +317,7 @@ test('htmlspecialchars_decode', function ($flags) {
 })
 ->with([ENT_QUOTES, ENT_NOQUOTES]);
 
-test('lcfirst', function () {
+test('lcfirst', function (): void {
 
     $str = new Str('TEST');
 
@@ -329,7 +329,7 @@ test('lcfirst', function () {
 
 });
 
-test('levenshtein', function ($string2, $cost) {
+test('levenshtein', function ($string2, $cost): void {
 
     $str = new Str('this is a test');
 
@@ -345,7 +345,7 @@ test('levenshtein', function ($string2, $cost) {
     [new Str('testing'), new Num(2)],
 ]);
 
-test('ltrim', function ($characters) {
+test('ltrim', function ($characters): void {
 
     $str = new Str(' testing ');
 
@@ -358,7 +358,7 @@ test('ltrim', function ($characters) {
 })
 ->with([' t', new Str(' t')]);
 
-test('md5', function ($binary) {
+test('md5', function ($binary): void {
 
     $str = new Str('test');
 
@@ -371,7 +371,7 @@ test('md5', function ($binary) {
 })
 ->with([true, false]);
 
-test('md5_file', function ($binary) {
+test('md5_file', function ($binary): void {
 
     $str = new Str('php://output');
 
@@ -384,7 +384,7 @@ test('md5_file', function ($binary) {
 })
 ->with([true, false]);
 
-test('metaphone', function ($max_phonemes) {
+test('metaphone', function ($max_phonemes): void {
 
     $str = new Str('test');
 
@@ -397,7 +397,7 @@ test('metaphone', function ($max_phonemes) {
 })
 ->with([2, new Num(2)]);
 
-test('nl_langinfo', function () {
+test('nl_langinfo', function (): void {
 
     $str = Str::nllanginfo(CODESET);
 
@@ -409,7 +409,7 @@ test('nl_langinfo', function () {
 
 });
 
-test('nl2br', function ($use_xhtml) {
+test('nl2br', function ($use_xhtml): void {
 
     $str = new Str('test1\ntest2');
 
@@ -422,7 +422,7 @@ test('nl2br', function ($use_xhtml) {
 })
 ->with([true, false]);
 
-test('ord', function () {
+test('ord', function (): void {
 
     $str = new Str('a');
 
@@ -443,7 +443,7 @@ test('ord', function () {
 
 });
 
-test('parse_str', function () {
+test('parse_str', function (): void {
 
     $str = new Str('test1=test2');
 
@@ -466,7 +466,7 @@ test('parse_str', function () {
 
 });
 
-test('preg_filter', function ($pattern, $replacement, $limit) {
+test('preg_filter', function ($pattern, $replacement, $limit): void {
 
     $str = new Str('test');
 
@@ -490,7 +490,7 @@ test('preg_filter', function ($pattern, $replacement, $limit) {
     [new Arr(['/[st]/']), 'a', 2],
 ]);
 
-test('preg_match', function ($pattern, $flags, $offset) {
+test('preg_match', function ($pattern, $flags, $offset): void {
 
     $str = new Str('test');
 
@@ -521,7 +521,7 @@ test('preg_match', function ($pattern, $flags, $offset) {
     [new Str('/[st]/'), PREG_OFFSET_CAPTURE, new Num(1)],
 ]);
 
-test('preg_match_all', function ($pattern, $flags, $offset) {
+test('preg_match_all', function ($pattern, $flags, $offset): void {
 
     $str = new Str('test');
 
@@ -552,7 +552,7 @@ test('preg_match_all', function ($pattern, $flags, $offset) {
     [new Str('/[st]/'), PREG_OFFSET_CAPTURE, new Num(1)],
 ]);
 
-test('pregquote', function ($delimiter) {
+test('pregquote', function ($delimiter): void {
 
     $str = new Str('te*st');
 
@@ -565,7 +565,7 @@ test('pregquote', function ($delimiter) {
 })
 ->with(['t', new Str('t')]);
 
-test('preg_replace', function ($pattern, $replacement, $limit) {
+test('preg_replace', function ($pattern, $replacement, $limit): void {
 
     $str = new Str('test');
 
@@ -589,15 +589,15 @@ test('preg_replace', function ($pattern, $replacement, $limit) {
     [new Arr(['/[st]/']), 'a', 2],
 ]);
 
-test('preg_replace_callback', function ($pattern, $limit) {
+test('preg_replace_callback', function ($pattern, $limit): void {
 
     $str = new Str('test');
 
-    expect($str->pregreplacecallback($pattern, fn ($matches) => strtoupper($matches[0]), $limit, $count1))
+    expect($str->pregreplacecallback($pattern, fn($matches) => strtoupper($matches[0]), $limit, $count1))
     ->toBe($str);
 
     expect($str())
-    ->toBe(preg_replace_callback('/[st]/', fn ($matches) => strtoupper($matches[0]), 'test', 2, $count2));
+    ->toBe(preg_replace_callback('/[st]/', fn($matches) => strtoupper($matches[0]), 'test', 2, $count2));
 
     expect($count1)
     ->toBeInstanceOf(Num::class);
@@ -613,7 +613,7 @@ test('preg_replace_callback', function ($pattern, $limit) {
     [new Arr(['/[st]/']), 2],
 ]);
 
-test('preg_replace_callback_array', function ($pattern, $limit, $flags) {
+test('preg_replace_callback_array', function ($pattern, $limit, $flags): void {
 
     $str = new Str('test');
 
@@ -621,7 +621,7 @@ test('preg_replace_callback_array', function ($pattern, $limit, $flags) {
     ->toBe($str);
 
     expect($str())
-    ->toBe(preg_replace_callback_array(['/[st]/' => fn ($matches) => strtoupper($matches[0])], 'test', 2, $count2, $flags));
+    ->toBe(preg_replace_callback_array(['/[st]/' => fn($matches) => strtoupper($matches[0])], 'test', 2, $count2, $flags));
 
     expect($count1)
     ->toBeInstanceOf(Num::class);
@@ -631,11 +631,11 @@ test('preg_replace_callback_array', function ($pattern, $limit, $flags) {
 
 })
 ->with([
-    [['/[st]/' => fn ($matches) => strtoupper($matches[0])], 2, 0],
-    [new Arr(['/[st]/' => fn ($matches) => strtoupper($matches[0])]), new Num(2), PREG_UNMATCHED_AS_NULL],
+    [['/[st]/' => fn($matches) => strtoupper($matches[0])], 2, 0],
+    [new Arr(['/[st]/' => fn($matches) => strtoupper($matches[0])]), new Num(2), PREG_UNMATCHED_AS_NULL],
 ]);
 
-test('preg_split', function ($pattern, $limit, $flags) {
+test('preg_split', function ($pattern, $limit, $flags): void {
 
     $str = new Str('test');
 
@@ -660,7 +660,7 @@ test('preg_split', function ($pattern, $limit, $flags) {
     [new Str('/[es]/'), new Num(2), PREG_SPLIT_OFFSET_CAPTURE],
 ]);
 
-test('printf', function ($string, $number) {
+test('printf', function ($string, $number): void {
 
     $str = new Str('%s %u');
 
@@ -675,7 +675,7 @@ test('printf', function ($string, $number) {
     [new Str('test'), new Num(1)],
 ]);
 
-test('print_r', function () {
+test('print_r', function (): void {
 
     $str = new Str('test');
 
@@ -694,7 +694,7 @@ test('print_r', function () {
 
 });
 
-test('quoted_printable_decode', function () {
+test('quoted_printable_decode', function (): void {
 
     $str = new Str(quoted_printable_encode('Möchten Sie ein paar Äpfel?'));
 
@@ -706,7 +706,7 @@ test('quoted_printable_decode', function () {
 
 });
 
-test('quoted_printable_encode', function () {
+test('quoted_printable_encode', function (): void {
 
     $str = new Str('Möchten Sie ein paar Äpfel?');
 
@@ -718,7 +718,7 @@ test('quoted_printable_encode', function () {
 
 });
 
-test('quotemeta', function () {
+test('quotemeta', function (): void {
 
     $str = new Str('test.test');
 
@@ -730,7 +730,7 @@ test('quotemeta', function () {
 
 });
 
-test('rtrim', function ($characters) {
+test('rtrim', function ($characters): void {
 
     $str = new Str(' testing ');
 
@@ -743,7 +743,7 @@ test('rtrim', function ($characters) {
 })
 ->with([' t', new Str(' t')]);
 
-test('sha1', function ($binary) {
+test('sha1', function ($binary): void {
 
     $str = new Str('test');
 
@@ -756,7 +756,7 @@ test('sha1', function ($binary) {
 })
 ->with([true, false]);
 
-test('sha1_file', function ($binary) {
+test('sha1_file', function ($binary): void {
 
     $str = new Str('php://output');
 
@@ -769,7 +769,7 @@ test('sha1_file', function ($binary) {
 })
 ->with([true, false]);
 
-test('similartext', function ($string2) {
+test('similartext', function ($string2): void {
 
     $str = new Str('test1');
 
@@ -797,7 +797,7 @@ test('similartext', function ($string2) {
 })
 ->with(['test2', new Str('test2')]);
 
-test('soundex', function () {
+test('soundex', function (): void {
 
     $str = new Str('test');
 
@@ -809,7 +809,7 @@ test('soundex', function () {
 
 });
 
-test('sprintf', function ($string, $number) {
+test('sprintf', function ($string, $number): void {
 
     $str = new Str('%s %u');
 
@@ -825,7 +825,7 @@ test('sprintf', function ($string, $number) {
     [new Str('test'), new Num(1)],
 ]);
 
-test('sscanf', function ($format) {
+test('sscanf', function ($format): void {
 
     $str = new Str('test 1');
 
@@ -847,7 +847,7 @@ test('sscanf', function ($format) {
 })
 ->with(['%s %u', new Str('%s %u')]);
 
-test('str_contains', function ($needle) {
+test('str_contains', function ($needle): void {
 
     $str = new Str('testing');
 
@@ -863,7 +863,7 @@ test('str_contains', function ($needle) {
 })
 ->with(['test', new Str('test')]);
 
-test('str_decrement', function () {
+test('str_decrement', function (): void {
 
     $str = new Str('test');
 
@@ -875,7 +875,7 @@ test('str_decrement', function () {
 
 });
 
-test('str_ends_with', function ($needle) {
+test('str_ends_with', function ($needle): void {
 
     $str = new Str('test');
 
@@ -891,7 +891,7 @@ test('str_ends_with', function ($needle) {
 })
 ->with(['st', new Str('st')]);
 
-test('str_getcsv', function ($separator, $enclosure, $escape) {
+test('str_getcsv', function ($separator, $enclosure, $escape): void {
 
     $str = new Str('test,test');
 
@@ -916,7 +916,7 @@ test('str_getcsv', function ($separator, $enclosure, $escape) {
     [new Str(','), new Str('\''), new Str('\\')],
 ]);
 
-test('str_increment', function () {
+test('str_increment', function (): void {
 
     $str = new Str('test');
 
@@ -928,7 +928,7 @@ test('str_increment', function () {
 
 });
 
-test('str_ireplace', function ($search, $replace) {
+test('str_ireplace', function ($search, $replace): void {
 
     $str = new Str('test test');
 
@@ -952,7 +952,7 @@ test('str_ireplace', function ($search, $replace) {
     [new Arr(['TEST']), new Arr(['testing'])],
 ]);
 
-test('str_pad', function ($length, $pad_string, $pad_type) {
+test('str_pad', function ($length, $pad_string, $pad_type): void {
 
     $str = new Str('test');
 
@@ -968,7 +968,7 @@ test('str_pad', function ($length, $pad_string, $pad_type) {
     [new Num(6), new Str('-'), STR_PAD_RIGHT],
 ]);
 
-test('str_repeat', function ($times) {
+test('str_repeat', function ($times): void {
 
     expect($str = Str::repeat('a', $times))
     ->toBe($str);
@@ -979,7 +979,7 @@ test('str_repeat', function ($times) {
 })
 ->with([6, new Num(6)]);
 
-test('str_replace', function ($search, $replace) {
+test('str_replace', function ($search, $replace): void {
 
     $str = new Str('test test');
 
@@ -1003,7 +1003,7 @@ test('str_replace', function ($search, $replace) {
     [new Arr(['test']), new Arr(['testing'])],
 ]);
 
-test('str_rot13', function () {
+test('str_rot13', function (): void {
 
     $str = new Str('test');
 
@@ -1015,7 +1015,7 @@ test('str_rot13', function () {
 
 });
 
-test('str_shuffle', function () {
+test('str_shuffle', function (): void {
 
     $str = new Str('ab');
 
@@ -1027,7 +1027,7 @@ test('str_shuffle', function () {
 
 });
 
-test('str_split', function ($length) {
+test('str_split', function ($length): void {
 
     $str = new Str('test');
 
@@ -1049,7 +1049,7 @@ test('str_split', function ($length) {
 })
 ->with([2, new Num(2)]);
 
-test('str_starts_with', function ($needle) {
+test('str_starts_with', function ($needle): void {
 
     $str = new Str('test');
 
@@ -1065,7 +1065,7 @@ test('str_starts_with', function ($needle) {
 })
 ->with(['te', new Str('te')]);
 
-test('str_word_count', function ($format, $characters, $class) {
+test('str_word_count', function ($format, $characters, $class): void {
 
     $str = new Str('test test -');
 
@@ -1091,7 +1091,7 @@ test('str_word_count', function ($format, $characters, $class) {
     [2, new Str('-'), Arr::class],
 ]);
 
-test('strcasecmp', function ($string2) {
+test('strcasecmp', function ($string2): void {
 
     $str = new Str('test1');
 
@@ -1113,7 +1113,7 @@ test('strcasecmp', function ($string2) {
 })
 ->with(['test2', new Str('test2')]);
 
-test('strcmp', function ($string2) {
+test('strcmp', function ($string2): void {
 
     $str = new Str('test1');
 
@@ -1135,7 +1135,7 @@ test('strcmp', function ($string2) {
 })
 ->with(['test2', new Str('test2')]);
 
-test('strcoll', function ($string2) {
+test('strcoll', function ($string2): void {
 
     $str = new Str('test1');
 
@@ -1157,7 +1157,7 @@ test('strcoll', function ($string2) {
 })
 ->with(['test2', new Str('test2')]);
 
-test('strcspn', function ($characters, $offset, $length) {
+test('strcspn', function ($characters, $offset, $length): void {
 
     $str = new Str('testtest');
 
@@ -1182,7 +1182,7 @@ test('strcspn', function ($characters, $offset, $length) {
     [new Str('t'), new Num(1), new Num(6)],
 ]);
 
-test('strip_tags', function ($allowed_tags) {
+test('strip_tags', function ($allowed_tags): void {
 
     $str = new Str('<span>Test<br></span>');
 
@@ -1200,7 +1200,7 @@ test('strip_tags', function ($allowed_tags) {
     new Str('<br>'),
 ]);
 
-test('stripcslashes', function () {
+test('stripcslashes', function (): void {
 
     $str = new Str('te\'s\nt');
 
@@ -1212,7 +1212,7 @@ test('stripcslashes', function () {
 
 });
 
-test('stripos', function ($needle, $offset) {
+test('stripos', function ($needle, $offset): void {
 
     $str = new Str('test');
 
@@ -1246,7 +1246,7 @@ test('stripos', function ($needle, $offset) {
     [new Str('t'), new Num(1)],
 ]);
 
-test('stripslashes', function () {
+test('stripslashes', function (): void {
 
     $str = new Str('te\'s\nt');
 
@@ -1258,7 +1258,7 @@ test('stripslashes', function () {
 
 });
 
-test('stristr', function ($needle, $before_needle) {
+test('stristr', function ($needle, $before_needle): void {
 
     $str = new Str('test');
 
@@ -1283,7 +1283,7 @@ test('stristr', function ($needle, $before_needle) {
     [new Str('s'), false],
 ]);
 
-test('strlen', function () {
+test('strlen', function (): void {
 
     $str = new Str('test');
 
@@ -1304,7 +1304,7 @@ test('strlen', function () {
 
 });
 
-test('strnatcasecmp', function ($string2) {
+test('strnatcasecmp', function ($string2): void {
 
     $str = new Str('test1');
 
@@ -1326,7 +1326,7 @@ test('strnatcasecmp', function ($string2) {
 })
 ->with(['TEST2', new Str('TEST2')]);
 
-test('strnatcmp', function ($string2) {
+test('strnatcmp', function ($string2): void {
 
     $str = new Str('test1');
 
@@ -1348,7 +1348,7 @@ test('strnatcmp', function ($string2) {
 })
 ->with(['TEST2', new Str('TEST2')]);
 
-test('strncasecmp', function ($string2, $length) {
+test('strncasecmp', function ($string2, $length): void {
 
     $str = new Str('test1');
 
@@ -1373,7 +1373,7 @@ test('strncasecmp', function ($string2, $length) {
     [new Str('TET2'), new Num(2)],
 ]);
 
-test('strncmp', function ($string2, $length) {
+test('strncmp', function ($string2, $length): void {
 
     $str = new Str('test1');
 
@@ -1398,7 +1398,7 @@ test('strncmp', function ($string2, $length) {
     [new Str('TET2'), new Num(2)],
 ]);
 
-test('strpbrk', function ($characters) {
+test('strpbrk', function ($characters): void {
 
     $str = new Str('test');
 
@@ -1420,7 +1420,7 @@ test('strpbrk', function ($characters) {
 })
 ->with(['s', new Str('s')]);
 
-test('strpos', function ($needle, $offset) {
+test('strpos', function ($needle, $offset): void {
 
     $str = new Str('test');
 
@@ -1454,7 +1454,7 @@ test('strpos', function ($needle, $offset) {
     [new Str('t'), new Num(1)],
 ]);
 
-test('strrchr', function ($needle, $before_needle) {
+test('strrchr', function ($needle, $before_needle): void {
 
     $str = new Str('test');
 
@@ -1481,7 +1481,7 @@ test('strrchr', function ($needle, $before_needle) {
     [new Str('s'), false],
 ]);
 
-test('strrev', function () {
+test('strrev', function (): void {
 
     $str = new Str('test');
 
@@ -1493,7 +1493,7 @@ test('strrev', function () {
 
 });
 
-test('strripos', function ($needle, $offset) {
+test('strripos', function ($needle, $offset): void {
 
     $str = new Str('test');
 
@@ -1527,7 +1527,7 @@ test('strripos', function ($needle, $offset) {
     [new Str('t'), new Num(1)],
 ]);
 
-test('strrpos', function ($needle, $offset) {
+test('strrpos', function ($needle, $offset): void {
 
     $str = new Str('test');
 
@@ -1561,7 +1561,7 @@ test('strrpos', function ($needle, $offset) {
     [new Str('t'), new Num(1)],
 ]);
 
-test('strspn', function ($characters, $offset, $length) {
+test('strspn', function ($characters, $offset, $length): void {
 
     $str = new Str('testtest');
 
@@ -1586,7 +1586,7 @@ test('strspn', function ($characters, $offset, $length) {
     [new Str('t'), new Num(1), new Num(6)],
 ]);
 
-test('strstr', function ($needle, $before_needle) {
+test('strstr', function ($needle, $before_needle): void {
 
     $str = new Str('test');
 
@@ -1611,7 +1611,7 @@ test('strstr', function ($needle, $before_needle) {
     [new Str('s'), false],
 ]);
 
-test('strtolower', function () {
+test('strtolower', function (): void {
 
     $str = new Str('TEST');
 
@@ -1623,7 +1623,7 @@ test('strtolower', function () {
 
 });
 
-test('strtoupper', function () {
+test('strtoupper', function (): void {
 
     $str = new Str('test');
 
@@ -1635,7 +1635,7 @@ test('strtoupper', function () {
 
 });
 
-test('strtr', function ($from, $to = null) {
+test('strtr', function ($from, $to = null): void {
 
     $str = new Str('test');
 
@@ -1653,7 +1653,7 @@ test('strtr', function ($from, $to = null) {
     new Arr(['t' => 'a']),
 ]);
 
-test('substr', function ($offset, $length) {
+test('substr', function ($offset, $length): void {
 
     $str = new Str('test test');
 
@@ -1669,7 +1669,7 @@ test('substr', function ($offset, $length) {
     [new Num(2), new Num(4)],
 ]);
 
-test('substr_compare', function ($needle, $offset, $length, $case_insensitive) {
+test('substr_compare', function ($needle, $offset, $length, $case_insensitive): void {
 
     $str = new Str('test test');
 
@@ -1694,7 +1694,7 @@ test('substr_compare', function ($needle, $offset, $length, $case_insensitive) {
     [new Str('TEST'), new Num(2), new Num(4), false],
 ]);
 
-test('substr_count', function ($needle, $offset, $length) {
+test('substr_count', function ($needle, $offset, $length): void {
 
     $str = new Str('test test');
 
@@ -1719,7 +1719,7 @@ test('substr_count', function ($needle, $offset, $length) {
     [new Str('test'), new Num(2), new Num(4)],
 ]);
 
-test('substr_replace', function ($replace, $offset, $length) {
+test('substr_replace', function ($replace, $offset, $length): void {
 
     $str = new Str('test test');
 
@@ -1735,7 +1735,7 @@ test('substr_replace', function ($replace, $offset, $length) {
     [new Str('test'), new Num(2), new Num(4)],
 ]);
 
-test('trim', function ($characters) {
+test('trim', function ($characters): void {
 
     $str = new Str(' testing ');
 
@@ -1748,7 +1748,7 @@ test('trim', function ($characters) {
 })
 ->with([' t', new Str(' t')]);
 
-test('ucfirst', function () {
+test('ucfirst', function (): void {
 
     $str = new Str('test');
 
@@ -1760,7 +1760,7 @@ test('ucfirst', function () {
 
 });
 
-test('ucwords', function ($separators) {
+test('ucwords', function ($separators): void {
 
     $str = new Str('test test');
 
@@ -1773,7 +1773,7 @@ test('ucwords', function ($separators) {
 })
 ->with([' s', new Str(' s')]);
 
-test('vardump', function () {
+test('vardump', function (): void {
 
     $str = new Str('test');
 
@@ -1784,7 +1784,7 @@ test('vardump', function () {
 
 });
 
-test('vfprintf', function ($values) {
+test('vfprintf', function ($values): void {
 
     $str = new Str('%s %u');
 
@@ -1799,7 +1799,7 @@ test('vfprintf', function ($values) {
     [new Arr(['test', 1])],
 ]);
 
-test('vprintf', function ($values) {
+test('vprintf', function ($values): void {
 
     $str = new Str('%s %u');
 
@@ -1814,7 +1814,7 @@ test('vprintf', function ($values) {
     [new Arr(['test', 1])],
 ]);
 
-test('vsprintf', function ($values) {
+test('vsprintf', function ($values): void {
 
     $str = new Str('%s %u');
 
@@ -1830,7 +1830,7 @@ test('vsprintf', function ($values) {
     [new Arr(['test', 1])],
 ]);
 
-test('wordwrap', function ($width, $break, $cut_long_words) {
+test('wordwrap', function ($width, $break, $cut_long_words): void {
 
     $str = new Str('testing testing');
 
@@ -1846,7 +1846,7 @@ test('wordwrap', function ($width, $break, $cut_long_words) {
     [new Num(4), new Str(','), false],
 ]);
 
-test('magic get', function () {
+test('magic get', function (): void {
 
     $str = new Str("te'st");
 
@@ -1855,7 +1855,7 @@ test('magic get', function () {
 
 });
 
-test('magic to string', function () {
+test('magic to string', function (): void {
 
     $str = new Str('test');
 

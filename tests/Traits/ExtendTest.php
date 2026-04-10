@@ -10,17 +10,11 @@ use function MichaelRushton\Types\arr;
 use function MichaelRushton\Types\num;
 use function MichaelRushton\Types\str;
 
-class NewArr extends Arr
-{
-};
-class NewNum extends Num
-{
-};
-class NewStr extends Str
-{
-};
+class NewArr extends Arr {};
+class NewNum extends Num {};
+class NewStr extends Str {};
 
-test('can extend arr', function ($class, $class_name) {
+test('can extend arr', function ($class, $class_name): void {
 
     expect($class::fill(0, 1, 1))
     ->toBeInstanceOf(Arr::class);
@@ -36,10 +30,10 @@ test('can extend arr', function ($class, $class_name) {
 })
 ->with([
     [NewArr::class, NewArr::class],
-    [$class = new class () extends Arr {}, $class::class],
+    [$class = new class extends Arr {}, $class::class],
 ]);
 
-test('can extend num', function ($class, $class_name) {
+test('can extend num', function ($class, $class_name): void {
 
     expect($class::pi())
     ->toBeInstanceOf(Num::class);
@@ -55,10 +49,10 @@ test('can extend num', function ($class, $class_name) {
 })
 ->with([
     [NewNum::class, NewNum::class],
-    [$class = new class () extends Num {}, $class::class],
+    [$class = new class extends Num {}, $class::class],
 ]);
 
-test('can extend str', function ($class, $class_name) {
+test('can extend str', function ($class, $class_name): void {
 
     Str::extend($class);
 
@@ -68,25 +62,25 @@ test('can extend str', function ($class, $class_name) {
 })
 ->with([
     [NewStr::class, NewStr::class],
-    [$class = new class () extends Str {}, $class::class],
+    [$class = new class extends Str {}, $class::class],
 ]);
 
-test('must extend arr', function () {
+test('must extend arr', function (): void {
     Arr::extend(stdClass::class);
 })
 ->throws(InvalidArgumentException::class);
 
-test('must extend num', function () {
+test('must extend num', function (): void {
     Num::extend(stdClass::class);
 })
 ->throws(InvalidArgumentException::class);
 
-test('must extend str', function () {
+test('must extend str', function (): void {
     Str::extend(stdClass::class);
 })
 ->throws(InvalidArgumentException::class);
 
-afterAll(function () {
+afterAll(function (): void {
     Arr::extend(Arr::class);
     Num::extend(Num::class);
     Str::extend(Str::class);

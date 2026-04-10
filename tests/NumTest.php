@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\Types\Num;
 use MichaelRushton\Types\Str;
 
-test('abs', function () {
+test('abs', function (): void {
 
     $num = new Num(-1);
 
@@ -17,7 +17,7 @@ test('abs', function () {
 
 });
 
-test('acos', function () {
+test('acos', function (): void {
 
     $num = new Num(0.5);
 
@@ -29,7 +29,7 @@ test('acos', function () {
 
 });
 
-test('acosh', function () {
+test('acosh', function (): void {
 
     $num = new Num(1.5);
 
@@ -41,7 +41,7 @@ test('acosh', function () {
 
 });
 
-test('add', function ($num2) {
+test('add', function ($num2): void {
 
     $num = new Num(10);
 
@@ -54,7 +54,7 @@ test('add', function ($num2) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('asin', function () {
+test('asin', function (): void {
 
     $num = new Num(1);
 
@@ -66,7 +66,7 @@ test('asin', function () {
 
 });
 
-test('asinh', function () {
+test('asinh', function (): void {
 
     $num = new Num(1);
 
@@ -78,7 +78,7 @@ test('asinh', function () {
 
 });
 
-test('atan', function () {
+test('atan', function (): void {
 
     $num = new Num(1);
 
@@ -90,7 +90,7 @@ test('atan', function () {
 
 });
 
-test('atan2', function ($x) {
+test('atan2', function ($x): void {
 
     $num = new Num(1);
 
@@ -103,7 +103,7 @@ test('atan2', function ($x) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('atanh', function () {
+test('atanh', function (): void {
 
     $num = new Num(0.5);
 
@@ -115,7 +115,7 @@ test('atanh', function () {
 
 });
 
-test('base', function ($base) {
+test('base', function ($base): void {
 
     $num = new Num(1, $base);
 
@@ -140,7 +140,7 @@ test('base', function ($base) {
 })
 ->with([10, 16]);
 
-test('baseconvert', function ($base) {
+test('baseconvert', function ($base): void {
 
     $num = new Num(10);
 
@@ -153,7 +153,7 @@ test('baseconvert', function ($base) {
 })
 ->with([16, new Num(16)]);
 
-test('bin', function () {
+test('bin', function (): void {
 
     $num = new Num(2);
 
@@ -165,7 +165,7 @@ test('bin', function () {
 
 });
 
-test('ceil', function () {
+test('ceil', function (): void {
 
     $num = new Num(0.5);
 
@@ -177,7 +177,7 @@ test('ceil', function () {
 
 });
 
-test('chr', function () {
+test('chr', function (): void {
 
     $num = new Num(1);
 
@@ -198,7 +198,7 @@ test('chr', function () {
 
 });
 
-test('clone', function () {
+test('clone', function (): void {
 
     $num1 = new Num(1);
 
@@ -225,7 +225,7 @@ test('clone', function () {
 
 });
 
-test('cos', function () {
+test('cos', function (): void {
 
     $num = new Num(1);
 
@@ -237,7 +237,7 @@ test('cos', function () {
 
 });
 
-test('cosh', function () {
+test('cosh', function (): void {
 
     $num = new Num(1);
 
@@ -249,7 +249,7 @@ test('cosh', function () {
 
 });
 
-test('dec', function () {
+test('dec', function (): void {
 
     $num = new Num('a', 16);
 
@@ -261,7 +261,7 @@ test('dec', function () {
 
 });
 
-test('deg2rad', function () {
+test('deg2rad', function (): void {
 
     $num = new Num(1);
 
@@ -273,7 +273,7 @@ test('deg2rad', function () {
 
 });
 
-test('echo', function () {
+test('echo', function (): void {
 
     $num = new Num(1);
 
@@ -284,7 +284,7 @@ test('echo', function () {
 
 });
 
-test('exp', function () {
+test('exp', function (): void {
 
     $num = new Num(1);
 
@@ -296,7 +296,7 @@ test('exp', function () {
 
 });
 
-test('expm1', function () {
+test('expm1', function (): void {
 
     $num = new Num(1);
 
@@ -308,7 +308,7 @@ test('expm1', function () {
 
 });
 
-test('fdiv', function ($num2) {
+test('fdiv', function ($num2): void {
 
     $num = new Num(1);
 
@@ -321,7 +321,7 @@ test('fdiv', function ($num2) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('floor', function () {
+test('floor', function (): void {
 
     $num = new Num(0.5);
 
@@ -333,7 +333,7 @@ test('floor', function () {
 
 });
 
-test('fmod', function ($num2) {
+test('fmod', function ($num2): void {
 
     $num = new Num(30.5);
 
@@ -346,7 +346,7 @@ test('fmod', function ($num2) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('fpow', function ($exponent) {
+test('fpow', function ($exponent): void {
 
     $num = new Num(1.5);
 
@@ -359,7 +359,7 @@ test('fpow', function ($exponent) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('hex', function () {
+test('hex', function (): void {
 
     $num = new Num(16);
 
@@ -371,7 +371,7 @@ test('hex', function () {
 
 });
 
-test('hypot', function ($y) {
+test('hypot', function ($y): void {
 
     $num = new Num(1);
 
@@ -384,7 +384,7 @@ test('hypot', function ($y) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('intdiv', function ($num2) {
+test('intdiv', function ($num2): void {
 
     $num = new Num(30);
 
@@ -397,7 +397,7 @@ test('intdiv', function ($num2) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('is_finite', function ($number) {
+test('is_finite', function ($number): void {
 
     $num = new Num($number);
 
@@ -413,7 +413,7 @@ test('is_finite', function ($number) {
 })
 ->with([1, INF]);
 
-test('is_infinite', function ($number) {
+test('is_infinite', function ($number): void {
 
     $num = new Num($number);
 
@@ -429,7 +429,7 @@ test('is_infinite', function ($number) {
 })
 ->with([1, INF]);
 
-test('is_nan', function ($number) {
+test('is_nan', function ($number): void {
 
     $num = new Num($number);
 
@@ -445,7 +445,7 @@ test('is_nan', function ($number) {
 })
 ->with([1, NAN]);
 
-test('log', function ($base) {
+test('log', function ($base): void {
 
     $num = new Num(10);
 
@@ -458,7 +458,7 @@ test('log', function ($base) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('log10', function () {
+test('log10', function (): void {
 
     $num = new Num(0.5);
 
@@ -470,7 +470,7 @@ test('log10', function () {
 
 });
 
-test('log1p', function () {
+test('log1p', function (): void {
 
     $num = new Num(1);
 
@@ -482,7 +482,7 @@ test('log1p', function () {
 
 });
 
-test('max', function ($value) {
+test('max', function ($value): void {
 
     $num = Num::max($value, new Num(16));
 
@@ -495,7 +495,7 @@ test('max', function ($value) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('min', function ($value) {
+test('min', function ($value): void {
 
     $num = Num::min($value, new Num(16));
 
@@ -508,7 +508,7 @@ test('min', function ($value) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('mul', function ($num2) {
+test('mul', function ($num2): void {
 
     $num = new Num(10);
 
@@ -521,7 +521,7 @@ test('mul', function ($num2) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('number_format', function ($decimals, $decimal_separator, $thousands_separator) {
+test('number_format', function ($decimals, $decimal_separator, $thousands_separator): void {
 
     $num = new Num(1000);
 
@@ -546,7 +546,7 @@ test('number_format', function ($decimals, $decimal_separator, $thousands_separa
     [new Num(1), new Str(' '), new Str('-')],
 ]);
 
-test('oct', function () {
+test('oct', function (): void {
 
     $num = new Num(8);
 
@@ -558,7 +558,7 @@ test('oct', function () {
 
 });
 
-test('pi', function () {
+test('pi', function (): void {
 
     expect($num = Num::pi())
     ->toBeInstanceOf(Num::class);
@@ -568,7 +568,7 @@ test('pi', function () {
 
 });
 
-test('pow', function ($exponent) {
+test('pow', function ($exponent): void {
 
     $num = new Num(1.5);
 
@@ -576,12 +576,12 @@ test('pow', function ($exponent) {
     ->toBe($num);
 
     expect($num())
-    ->toBe(pow(1.5, 15));
+    ->toBe(1.5 ** 15);
 
 })
 ->with([15, new Num('f', 16)]);
 
-test('print_r', function () {
+test('print_r', function (): void {
 
     $num = new Num(1);
 
@@ -600,7 +600,7 @@ test('print_r', function () {
 
 });
 
-test('rad2deg', function () {
+test('rad2deg', function (): void {
 
     $num = new Num(1);
 
@@ -612,7 +612,7 @@ test('rad2deg', function () {
 
 });
 
-test('round', function ($precision, $mode) {
+test('round', function ($precision, $mode): void {
 
     $num = new Num(1.555);
 
@@ -626,7 +626,7 @@ test('round', function ($precision, $mode) {
 ->with([0, 1, 2, new Num(1), new Num(2), new Num(3)])
 ->with([PHP_ROUND_HALF_UP, PHP_ROUND_HALF_DOWN, PHP_ROUND_HALF_EVEN, PHP_ROUND_HALF_ODD]);
 
-test('serialize', function () {
+test('serialize', function (): void {
 
     $num = new Num(1);
 
@@ -641,7 +641,7 @@ test('serialize', function () {
 
 });
 
-test('sin', function () {
+test('sin', function (): void {
 
     $num = new Num(1);
 
@@ -653,7 +653,7 @@ test('sin', function () {
 
 });
 
-test('sinh', function () {
+test('sinh', function (): void {
 
     $num = new Num(1);
 
@@ -665,7 +665,7 @@ test('sinh', function () {
 
 });
 
-test('sqrt', function () {
+test('sqrt', function (): void {
 
     $num = new Num(0.5);
 
@@ -677,7 +677,7 @@ test('sqrt', function () {
 
 });
 
-test('sub', function ($num2) {
+test('sub', function ($num2): void {
 
     $num = new Num(25);
 
@@ -690,7 +690,7 @@ test('sub', function ($num2) {
 })
 ->with([15, new Num('f', 16)]);
 
-test('tan', function () {
+test('tan', function (): void {
 
     $num = new Num(1);
 
@@ -702,7 +702,7 @@ test('tan', function () {
 
 });
 
-test('tanh', function () {
+test('tanh', function (): void {
 
     $num = new Num(1);
 
@@ -714,7 +714,7 @@ test('tanh', function () {
 
 });
 
-test('vardump', function () {
+test('vardump', function (): void {
 
     $num = new Num(1);
 
@@ -725,7 +725,7 @@ test('vardump', function () {
 
 });
 
-test('magic get', function () {
+test('magic get', function (): void {
 
     $num = new Num(-1);
 
@@ -734,7 +734,7 @@ test('magic get', function () {
 
 });
 
-test('magic to string', function () {
+test('magic to string', function (): void {
 
     $num = new Num(1.1);
 

@@ -50,17 +50,17 @@ abstract class Convert
                 return $number;
             }
 
-            return false === strpos($number, '.') ? (int) $number : (float) $number;
+            return   !str_contains($number, '.') ? (int) $number : (float) $number;
 
         }
 
         $num = (int) base_convert(ltrim(strtok((string) $number, '.'), '-'), $from_base, 10);
 
         foreach (str_split(strtok('') ?: '') as $k => $v) {
-            $num += base_convert($v, $from_base, 10) * pow($from_base, -1 - $k);
+            $num += base_convert($v, $from_base, 10) * $from_base ** (-1 - $k);
         }
 
-        return 0 === strpos((string) $number, '-') ? 0 - $num : $num;
+        return   str_starts_with((string) $number, '-') ? 0 - $num : $num;
 
     }
 

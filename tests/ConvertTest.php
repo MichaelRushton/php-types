@@ -7,7 +7,7 @@ use MichaelRushton\Types\Convert;
 use MichaelRushton\Types\Num;
 use MichaelRushton\Types\Str;
 
-test('convert to fluent type', function ($value, $expected) {
+test('convert to fluent type', function ($value, $expected): void {
 
     expect(Convert::toFluentType($value))
     ->toEqual($expected);
@@ -24,7 +24,7 @@ test('convert to fluent type', function ($value, $expected) {
     [new stdClass(), new stdClass()],
 ]);
 
-test('convert from fluent type', function ($value, $expected) {
+test('convert from fluent type', function ($value, $expected): void {
 
     expect(Convert::fromFluentType($value))
     ->toEqual($expected);
@@ -47,7 +47,7 @@ test('convert from fluent type', function ($value, $expected) {
     [[new Arr(['test1']), new Num(1), new Num(1.0), new Str('test2')], [['test1'], 1, 1.0, 'test2']],
 ]);
 
-test('convert to base 10', function ($number, $from_base, $expected) {
+test('convert to base 10', function ($number, $from_base, $expected): void {
 
     expect(Convert::toBase10($number, $from_base))
     ->toBe($expected);
@@ -72,7 +72,7 @@ test('convert to base 10', function ($number, $from_base, $expected) {
     ['-f.abcdef123456', 16, -15.671111051506465],
 ]);
 
-test('convert from base 10', function ($number, $to_base, $expected) {
+test('convert from base 10', function ($number, $to_base, $expected): void {
 
     expect(Convert::fromBase10($number, $to_base))
     ->toBe($expected);

@@ -25,7 +25,7 @@ class Num implements Stringable
 
         $this->number = match (true) {
             10 !== $this->base => Convert::toBase10($number, $this->base),
-            \is_string($number) => false === strpos($number, '.') ? (int) $number : (float) $number,
+            \is_string($number) =>   !str_contains($number, '.') ? (int) $number : (float) $number,
             default => $number,
         };
 
@@ -404,7 +404,7 @@ class Num implements Stringable
     public function pow(int|float|self $exponent): static
     {
 
-        $this->number = pow($this->number, Convert::fromFluentType($exponent));
+        $this->number = $this->number ** Convert::fromFluentType($exponent);
 
         return $this;
 
