@@ -154,6 +154,43 @@ var_dump($str);
 // string(7) 'EXAMPLE'
 ```
 
+\
+Use the `when` method to conditionally modify the object.
+
+```php
+echo str('test')->when(
+    $value,
+    if_true: function ($str, $value)
+    {
+        $str->toupper();
+    },
+    if_false: function ($str, $value)
+    {
+        $str->tolower();
+    }
+);
+```
+
+\
+Use the `pipe` method to pipe the object through a callback
+
+```php
+$length = str('test')->pipe(function ($str)
+{
+    return $str->len();
+});
+```
+
+\
+Use the `through` method to pass the object through a callback
+
+```php
+$str = str('test')->through(function ($str)
+{
+    $str->toupper();
+});
+```
+
 ## Arithmetic in other bases
 
 The `Num` class can work in any base between 2 and 36 by passing the base as the second argument. When working in anything other than base 10 the number will be returned as a string.

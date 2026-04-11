@@ -5,11 +5,17 @@ declare(strict_types=1);
 namespace MichaelRushton\Types;
 
 use MichaelRushton\Types\Traits\Extend;
+use MichaelRushton\Types\Traits\Pipe;
+use MichaelRushton\Types\Traits\Through;
+use MichaelRushton\Types\Traits\When;
 use Stringable;
 
 class Num implements Stringable
 {
     use Extend;
+    use Pipe;
+    use Through;
+    use When;
 
     protected int|float $number;
     protected int $base;

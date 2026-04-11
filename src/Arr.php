@@ -7,10 +7,16 @@ namespace MichaelRushton\Types;
 use ArrayAccess;
 use Iterator;
 use MichaelRushton\Types\Traits\Extend;
+use MichaelRushton\Types\Traits\Pipe;
+use MichaelRushton\Types\Traits\Through;
+use MichaelRushton\Types\Traits\When;
 
 class Arr implements ArrayAccess, Iterator
 {
     use Extend;
+    use Pipe;
+    use Through;
+    use When;
 
     public function __construct(protected array $array = [])
     {
