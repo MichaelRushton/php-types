@@ -689,7 +689,7 @@ test('array_rand', function (): void {
     expect($num = $arr->rand())
     ->toBeInstanceOf(Num::class);
 
-    expect(in_array($num(), [1, 2]))
+    expect(\in_array($num(), [1, 2]))
     ->toBeTrue();
 
     $arr = new Arr(['a' => 'test1', 'b' => 'test2']);
@@ -697,7 +697,7 @@ test('array_rand', function (): void {
     expect($str = $arr->rand())
     ->toBeInstanceOf(Str::class);
 
-    expect(in_array($str(), ['a', 'b']))
+    expect(\in_array($str(), ['a', 'b']))
     ->toBeTrue();
 
     expect($arr2 = $arr->rand(2))
@@ -828,7 +828,7 @@ test('array_slice', function ($offset, $length, $preserve_keys): void {
     ->toBe($arr);
 
     expect($arr())
-    ->toBe(array_slice($array, 1, 2, $preserve_keys));
+    ->toBe(\array_slice($array, 1, 2, $preserve_keys));
 
 })
 ->with([
@@ -1793,7 +1793,7 @@ test('shuffle', function (): void {
     expect($arr->shuffle())
     ->toBe($arr);
 
-    expect(in_array($arr(), [[1, 2], [2, 1]]))
+    expect(\in_array($arr(), [[1, 2], [2, 1]]))
     ->toBeTrue();
 
 });

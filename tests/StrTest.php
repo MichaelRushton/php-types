@@ -430,7 +430,7 @@ test('ord', function (): void {
     ->toBeInstanceOf(Num::class);
 
     expect($num())
-    ->toBe($expected = ord('a'));
+    ->toBe($expected = \ord('a'));
 
     expect($str->ord($return))
     ->toBe($str);
@@ -817,7 +817,7 @@ test('sprintf', function ($string, $number): void {
     ->toBe($str);
 
     expect($str())
-    ->toBe(sprintf('%s %u', 'test', 1));
+    ->toBe(\sprintf('%s %u', 'test', 1));
 
 })
 ->with([
@@ -1022,7 +1022,7 @@ test('str_shuffle', function (): void {
     expect($str->shuffle())
     ->toBe($str);
 
-    expect(in_array($str(), ['ab', 'ba']))
+    expect(\in_array($str(), ['ab', 'ba']))
     ->toBeTrue();
 
 });
@@ -1291,7 +1291,7 @@ test('strlen', function (): void {
     ->toBeInstanceOf(Num::class);
 
     expect($num())
-    ->toBe(strlen('test'));
+    ->toBe(\strlen('test'));
 
     expect($str->len($return))
     ->toBe($str);
@@ -1300,7 +1300,7 @@ test('strlen', function (): void {
     ->toBeInstanceOf(Num::class);
 
     expect($return())
-    ->toBe(strlen('test'));
+    ->toBe(\strlen('test'));
 
 });
 
@@ -1639,7 +1639,7 @@ test('strtr', function ($from, $to = null): void {
 
     $str = new Str('test');
 
-    expect($str->tr(...$args = func_get_args()))
+    expect($str->tr(...$args = \func_get_args()))
     ->toBe($str);
 
     expect($str())

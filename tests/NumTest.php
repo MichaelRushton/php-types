@@ -185,7 +185,7 @@ test('chr', function (): void {
     ->toBeInstanceOf(Str::class);
 
     expect($str())
-    ->toBe($expected = chr(1));
+    ->toBe($expected = \chr(1));
 
     expect($num->chr($return))
     ->toBe($num);

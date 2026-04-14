@@ -31,7 +31,7 @@ class Num implements Stringable
 
         $this->number = match (true) {
             10 !== $this->base => Convert::toBase10($number, $this->base),
-            \is_string($number) =>   !str_contains($number, '.') ? (int) $number : (float) $number,
+            \is_string($number) => !str_contains($number, '.') ? (int) $number : (float) $number,
             default => $number,
         };
 
