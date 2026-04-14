@@ -121,7 +121,7 @@ public function fpow(float|self $exponent): static
 public function format(
     int|self $decimals,
     string|Str|null $decimal_separator = '.',
-    string|Str|null $thousands_separator  = ',',
+    string|Str|null $thousands_separator = ',',
     ?Str &$return = null
 ): Str|static
 ```

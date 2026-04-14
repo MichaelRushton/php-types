@@ -50,7 +50,7 @@ abstract class Convert
                 return $number;
             }
 
-            return   !str_contains($number, '.') ? (int) $number : (float) $number;
+            return !str_contains($number, '.') ? (int) $number : (float) $number;
 
         }
 
@@ -60,7 +60,7 @@ abstract class Convert
             $num += base_convert($v, $from_base, 10) * $from_base ** (-1 - $k);
         }
 
-        return   str_starts_with((string) $number, '-') ? 0 - $num : $num;
+        return str_starts_with((string) $number, '-') ? 0 - $num : $num;
 
     }
 

@@ -407,7 +407,7 @@ class Str implements Stringable
         string|self $string2,
         int|Num $insertion_cost = 1,
         int|Num $replacement_cost = 1,
-        int|Num $deletion_cost  = 1,
+        int|Num $deletion_cost = 1,
         ?Num &$return = null
     ): Num|static {
 
