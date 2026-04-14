@@ -13,47 +13,12 @@ composer require michaelrushton/types
 The classes in this library are wrappers for the native [array](https://www.php.net/manual/en/ref.array.php), [math](https://www.php.net/manual/en/ref.math.php), and [string](https://www.php.net/manual/en/ref.strings.php) functions. Method names mostly use the native function names but with any underscores and `str` or `array` prefixes removed.
 
 ```php
-use function MichaelRushton\Types\arr;
-
-$array = arr(['d', 'c', 'b', 'a'])
-->push('e')
-->sort()
-->map('strtoupper');
-
-print_r($array());
-/*
-Array
-(
-    [0] => A
-    [1] => B
-    [2] => C
-    [3] => D
-    [4] => E
-)
-*/
-```
-
-```php
-use function MichaelRushton\Types\num;
-
-$num = num(4)
-->pow(4)
-->fdiv(10)
-->floor();
-
-echo $num;
-// 25
-```
-
-```php
 use function MichaelRushton\Types\str;
 
-$string = str('this is a string')
+echo str('this is a string')
 ->ucwords()
 ->replace(' ', '')
 ->lcfirst();
-
-echo $string;
 // thisIsAString
 ```
 
@@ -77,9 +42,8 @@ Methods are chainable even when switching between arrays, numbers, and strings.
 echo str('here are words')
 ->explode(' ')
 ->merge(['and', 'more', 'words'])
-->count()
-->pow(2);
-// 36
+->implode(' ');
+// here are words and more words
 ```
 
 \
@@ -99,39 +63,6 @@ echo str('example')->len($length);
 
 echo $length->add(1);
 // 8
-```
-
-\
-Each class provides a `printr`, `vardump`, and `clone` method to call `print_r`, `var_dump`, and `clone` respectively. The `Num` and `Str` classes provide an `echo` method to call `echo`.
-
-```php
-$str = arr(['a', 'b', 'c'])
-->printr()
-->clone($arr)
-->implode(',')
-->vardump()
-->toupper()
-->echo();
-/*
-Array
-(
-    [0] => a
-    [1] => b
-    [2] => c
-)
-string(5) 'a,b,c'
-A,B,C
-*/
-
-$arr->printr();
-/*
-Array
-(
-    [0] => a
-    [1] => b
-    [2] => c
-)
-*/
 ```
 
 \
@@ -155,39 +86,28 @@ var_dump($str);
 ```
 
 \
-Use the `when` method to conditionally modify the object.
+Use the `through` method to pass the object through a callback, returning the object.
 
 ```php
-echo str('test')->when(
-    $value,
-    if_true: function ($str, $value)
-    {
-        $str->toupper();
-    },
-    if_false: function ($str, $value)
-    {
-        $str->tolower();
-    }
-);
-```
+use MichaelRushton\Types\Str;
 
-\
-Use the `pipe` method to pipe the object through a callback
-
-```php
-$length = str('test')->pipe(function ($str)
+$str = str('this is a string')->through(function (Str $str)
 {
-    return $str->len();
+    $str->ucwords()
+    ->replace(' ', '')
+    ->lcfirst();
 });
 ```
 
 \
-Use the `through` method to pass the object through a callback
+Use the `pipe` method to pipe the object through a callback, returning the given value.
 
 ```php
-$str = str('test')->through(function ($str)
+use MichaelRushton\Types\Str;
+
+$length = str(' test ')->pipe(function (Str $str)
 {
-    $str->toupper();
+    return $str->trim()->len;
 });
 ```
 
@@ -197,13 +117,13 @@ The `Num` class can work in any base between 2 and 36 by passing the base as the
 
 ```php
 $num = num('-f.ab', 16)
-->mul(10); // 10 as a base 10 number
+->mul(10); // multiply by 10 as a base 10 number
 
 var_dump($num());
 // string(6) '-9c.ae'
 
 $num = num('-f.ab', 16)
-->mul(num(10, 16)); // 10 as a base 16 number
+->mul(num(10, 16)); // multiply by 10 as a base 16 number
 
 var_dump($num());
 // string(5) '-fa.b'
