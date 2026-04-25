@@ -28,11 +28,11 @@ Two notable exceptions to the naming convention in the `Arr` class are `advance`
 ```php
 $arr = arr([1, 2, 3]);
 
-var_dump($arr->contains(1));
-// bool(true)
+$arr->contains(1);
+// true
 
-var_dump($arr->advance());
-// int(2)
+$arr->advance();
+// num(2)
 ```
 
 \
@@ -66,7 +66,7 @@ echo $length->add(1);
 ```
 
 \
-To return the underlying value, invoke the object as a function.
+Invoke the object as a function to return the underlying value.
 
 ```php
 $str = str('example')->toupper()();
