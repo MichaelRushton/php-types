@@ -1,4 +1,4 @@
-ARG PHP_VERSION=8.4
+ARG PHP_VERSION=8.5
 FROM php:${PHP_VERSION}-alpine
 COPY --from=ghcr.io/php/pie:bin /pie /usr/bin/pie
 RUN apk add --no-cache autoconf g++ linux-headers make && \
