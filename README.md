@@ -86,6 +86,18 @@ var_dump($str);
 ```
 
 \
+Use the `pipe` method to pipe the object through a callback, returning the given value.
+
+```php
+use MichaelRushton\Types\Str;
+
+$length = str(' test ')->pipe(function (Str $str)
+{
+    return $str->trim()->len;
+});
+```
+
+\
 Use the `through` method to pass the object through a callback, returning the object.
 
 ```php
@@ -100,15 +112,22 @@ $str = str('this is a string')->through(function (Str $str)
 ```
 
 \
-Use the `pipe` method to pipe the object through a callback, returning the given value.
+Use the `when` method to conditionally call methods, returning the object.
 
 ```php
 use MichaelRushton\Types\Str;
 
-$length = str(' test ')->pipe(function (Str $str)
-{
-    return $str->trim()->len;
-});
+$str = str('test')->when(
+    value: $to_upper,
+    if_true: function (Str $str, $to_upper)
+    {
+        $str->toupper();
+    },
+    if_false: function (Str $str, $to_upper)
+    {
+        $str->tolower();
+    }
+);
 ```
 
 ## Arithmetic in other bases
