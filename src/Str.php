@@ -627,9 +627,13 @@ class Str implements StrInterface, Stringable
         return new static(sha1($this->value, $binary));
     }
 
-    public function sha1file(bool $binary = false): static
+    public function sha1file(bool $binary = false): static|false
     {
-        return new static(sha1_file($this->value, $binary));
+
+        $return = sha1_file($this->value, $binary);
+
+        return false === $return ? $return : new static($return);
+
     }
 
     public function shuffle(): static

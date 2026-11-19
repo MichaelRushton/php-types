@@ -658,13 +658,13 @@ test('sha1', function ($binary): void {
 
 test('sha1_file', function ($binary): void {
 
-    $str = new Str('php://output');
+    $str = new Str($tmpnam = tempnam('/tmp', 'test'));
 
     expect($str = $str->sha1file($binary))
     ->toBeInstanceOf(Str::class);
 
     expect($str->value)
-    ->toBe(sha1_file('php://output', $binary));
+    ->toBe(sha1_file($tmpnam, $binary));
 
 })
 ->with([true, false]);

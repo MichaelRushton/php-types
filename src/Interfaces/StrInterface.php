@@ -254,7 +254,7 @@ interface StrInterface
 
     public function sha1(bool $binary = false): static;
 
-    public function sha1file(bool $binary = false): static;
+    public function sha1file(bool $binary = false): static|false;
 
     public function shuffle(): static;
 
